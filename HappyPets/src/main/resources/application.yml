@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/HappyPets?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password: Nacioneishan@0482
+      #mvc:
+      #hiddenmethod:
+      #filter:
+    #enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: create-drop
+    #open-in-view: false
+    defer-datasource-initialization: true
+      #properties:
+      #hibernate:
+    #format_sql: true
+#  sql:
+#    init:
+#      mode: always
+
+
+mail:
+  host: "localhost"
+  port: 1025
+  username: "hpets@yahoo.com"
+  password: ""

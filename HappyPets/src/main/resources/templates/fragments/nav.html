@@ -1,0 +1,64 @@
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
+<div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
+        <a class="navbar-brand d-block d-lg-none" href="">
+            <h1 class="m-0 display-5 text-capitalize font-italic text-white"><span class="text-primary">Happy</span>Pets
+            </h1>
+        </a>
+        <button class="navbar-toggler" data-target="#navbarCollapse" data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+            <div class="navbar-nav mr-auto py-0">
+                <a class="nav-item nav-link active" href="/index"
+                   th:text="#{navbar_home}"
+                >Home</a>
+                <a class="nav-item nav-link" href="/about"
+                   th:text="#{navbar_about}"
+                >About</a>
+                <a class="nav-item nav-link" href="/service"
+                   th:text="#{navbar_service}"
+                >Services</a>
+                <a class="nav-item nav-link" href="/price"
+                   th:text="#{navbar_price}"
+                >Price</a>
+                <a class="nav-item nav-link" href="/booking"
+                   th:text="#{navbar_booking}"
+                >Booking</a>
+                <a class="nav-item nav-link" sec:authorize="!isAuthenticated()" th:href="@{/login}"
+                   th:text="#{navbar_login}"
+                >Login</a>
+                <a class="nav-item nav-link" sec:authorize="!isAuthenticated()" th:href="@{/register}"
+                   th:text="#{navbar_register}"
+                >Register</a>
+                <a class="nav-item nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}"
+                   th:text="#{navbar_logout}">Logout</a>
+
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <div class="form-inline my-2 my-lg-0 px-3">
+                        <div class="text-white" style="position: absolute; left: 1200px; top: 30px;">Welcome,
+                            <th:block th:text="${#authentication.principal.fullName}">X</th:block>
+                            !
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="nav-lang">
+                    <form th:method="get">
+                        <label class="text-white" for="lang" th:text="#{navbar_language}"></label>
+                        <select
+                                id="lang"
+                                name="lang"
+                                onchange="this.form.submit()">
+                            <option th:selected="${#locale.toString()} == 'en_US'" value="en_US">English</option>
+                            <option th:selected="${#locale.toString()} == 'bg_BG'" value="bg_BG">Български</option>
+                        </select>
+                    </form>
+                </li>
+            </div>
+        </div>
+    </nav>
+</div>

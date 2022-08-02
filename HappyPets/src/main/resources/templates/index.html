@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
+
+
+<div th:replace="fragments/head">Head</div>
+
+
+<body>
+<!-- Topbar Start -->
+<div th:replace="fragments/Top">Topbar</div>
+<!-- Topbar End -->
+
+<!-- Navbar Start -->
+<div th:replace="fragments/header">Header</div>
+<!-- Navbar End -->
+
+<!-- Carousel Start -->
+<div class="container-fluid p-0">
+    <div class="carousel slide" data-ride="carousel" id="header-carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img alt="Image" class="w-100" th:src="@{/images/carousel-1.jpg}">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="p-3" style="max-width: 900px;">
+                        <h3 class="text-white mb-3 d-none d-sm-block">Best Pet Services</h3>
+                        <h1 class="display-3 text-white mb-3">Pet Hotel</h1>
+                        <h5 class="text-white mb-3 d-none d-sm-block">Going on vacation? Book a stay for your pet with
+                            us!</h5>
+                        <a class="btn btn-lg btn-primary mt-3 mt-md-4 px-4" th:href="booking">Book Now</a>
+                        <a class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4" th:href="service">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img alt="Image" class="w-100" th:src="@{/images/carousel-2.jpg}">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="p-3" style="max-width: 900px;">
+                        <h3 class="text-white mb-3 d-none d-sm-block">Best Pet Services</h3>
+                        <h1 class="display-3 text-white mb-3">Pet Spa & Grooming</h1>
+                        <h5 class="text-white mb-3 d-none d-sm-block">Your pet needs a day off from you or just a bit of
+                            grooming will be enough, book the service your pet needs now!</h5>
+                        <a class="btn btn-lg btn-primary mt-3 mt-md-4 px-4" href="booking">Book Now</a>
+                        <a class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4" href="service">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" data-slide="prev" href="#header-carousel">
+            <div class="btn btn-primary rounded" style="width: 45px; height: 45px;">
+                <span class="carousel-control-prev-icon mb-n2"></span>
+            </div>
+        </a>
+        <a class="carousel-control-next" data-slide="next" href="#header-carousel">
+            <div class="btn btn-primary rounded" style="width: 45px; height: 45px;">
+                <span class="carousel-control-next-icon mb-n2"></span>
+            </div>
+        </a>
+    </div>
+</div>
+<!-- Carousel End -->
+
+
+<!-- Features Start -->
+<div th:replace="fragments/why-choose">whyChoose</div>
+
+<!-- Features End -->
+
+
+<!-- Pricing Plan Start -->
+<div class="container-fluid bg-light pt-5 pb-4">
+    <div class="container py-5">
+        <div class="d-flex flex-column text-center mb-5">
+            <h4 class="text-secondary mb-3">Pricing Plan</h4>
+            <h1 class="display-4 m-0">Choose the <span class="text-primary">Best Price</span></h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0">
+                    <div class="card-header position-relative border-0 p-0 mb-4">
+                        <img alt="" class="card-img-top" th:src="@{/images/price-1.jpg}">
+                        <div class="position-absolute d-flex flex-column align-items-center justify-content-center w-100 h-100"
+                             style="top: 0; left: 0; z-index: 1; background: rgba(0, 0, 0, .5);">
+                            <h3 class="text-primary mb-3">Basic</h3>
+                            <h1 class="display-4 text-white mb-0">
+                                <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>49<small
+                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Mo</small>
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="card-body text-center p-0">
+                        <ul class="list-group list-group-flush mb-4">
+                            <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Feeding</li>
+                            <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Boarding</li>
+                            <li class="list-group-item p-2"><i class="fa fa-times text-danger mr-2"></i>Spa & Grooming
+                            </li>
+                            <li class="list-group-item p-2"><i class="fa fa-times text-danger mr-2"></i>Veterinary
+                                Medicine
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer border-0 p-0">
+                        <a class="btn btn-primary btn-block p-3" sec:authorize="isAnonymous()" style="border-radius: 0;"
+                           th:href="register">Signup Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0">
+                    <div class="card-header position-relative border-0 p-0 mb-4">
+                        <img alt="" class="card-img-top" th:src="@{/images/price-2.jpg}">
+                        <div class="position-absolute d-flex flex-column align-items-center justify-content-center w-100 h-100"
+                             style="top: 0; left: 0; z-index: 1; background: rgba(0, 0, 0, .5);">
+                            <h3 class="text-secondary mb-3">Standard</h3>
+                            <h1 class="display-4 text-white mb-0">
+                                <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>99<small
+                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Mo</small>
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="card-body text-center p-0">
+                        <ul class="list-group list-group-flush mb-4">
+                            <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Feeding</li>
+                            <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Boarding</li>
+                            <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Spa &
+                                Grooming
+                            </li>
+                            <li class="list-group-item p-2"><i class="fa fa-times text-danger mr-2"></i>Veterinary
+                                Medicine
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer border-0 p-0">
+                        <a class="btn btn-secondary btn-block p-3" sec:authorize="isAnonymous()" style="border-radius: 0;"
+                           th:href="register">Signup Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card border-0">
+                    <div class="card-header position-relative border-0 p-0 mb-4">
+                        <img alt="" class="card-img-top" th:src="@{/images/price-3.jpg}">
+                        <div class="position-absolute d-flex flex-column align-items-center justify-content-center w-100 h-100"
+                             style="top: 0; left: 0; z-index: 1; background: rgba(0, 0, 0, .5);">
+                            <h3 class="text-primary mb-3">Premium</h3>
+                            <h1 class="display-4 text-white mb-0">
+                                <small class="align-top" style="font-size: 22px; line-height: 45px;">$</small>149<small
+                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Mo</small>
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="card-body text-center p-0">
+                        <ul class="list-group list-group-flush mb-4">
+                            <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Feeding</li>
+                            <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Boarding</li>
+                            <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Spa &
+                                Grooming
+                            </li>
+                            <li class="list-group-item p-2"><i class="fa fa-check text-secondary mr-2"></i>Veterinary
+                                Medicine
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer border-0 p-0">
+                        <a class="btn btn-primary btn-block p-3" sec:authorize="isAnonymous()" style="border-radius: 0;"
+                           th:href="register">Signup Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Pricing Plan End -->
+
+
+<!-- Team Start -->
+<div th:replace="fragments/team">team</div>
+<!-- Team End -->
+
+
+<!-- Testimonial Start -->
+<div class="container-fluid bg-light my-5 p-0 py-5">
+    <div class="container p-0 py-5">
+        <div class="d-flex flex-column text-center mb-5">
+            <h4 class="text-secondary mb-3">Testimonial</h4>
+            <h1 class="display-4 m-0">Our Client <span class="text-primary">Says</span></h1>
+        </div>
+        <div class="owl-carousel testimonial-carousel">
+            <div class="bg-white mx-3 p-4">
+                <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
+                    <img alt="" class="img-fluid" style="width: 80px; height: 80px;"
+                         th:src="@{/images/testimonial-1.jpg}">
+                    <div class="ml-3">
+                        <h5>Stilian Shopov</h5>
+                    </div>
+                </div>
+                <p class="m-0">I honestly can't recommend this place enough.
+                    My very nervous reactive boy loves it here.
+                    They genuinely care about our pets and you can rest assured that they are treated like they are at
+                    home.</p>
+            </div>
+            <div class="bg-white mx-3 p-4">
+                <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
+                    <img alt="" class="img-fluid" style="width: 80px; height: 80px;"
+                         th:src="@{/images/testimonial-2.jpg}">
+                    <div class="ml-3">
+                        <h5>Simeon Nikolov</h5>
+                    </div>
+                </div>
+                <p class="m-0">First time using Happy Pets for my not so little fur baby and they were absolutely
+                    amazing. I
+                    know I have now found a kennels for life when traveling away... all the staff are so nice and
+                    lovely,
+                    they saw when I dropped her off that I was nervous and they reassured me she was fine, and having
+                    them send me
+                    a couple of pictures they to show me how well she was doing relaxed me even more... thank you so
+                    much. Arya loved her stay.
+                </p>
+            </div>
+            <div class="bg-white mx-3 p-4">
+                <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
+                    <img alt="" class="img-fluid" style="width: 80px; height: 80px;"
+                         th:src="@{/images/testimonial-3.jpg}">
+                    <div class="ml-3">
+                        <h5>Petar Ivanov</h5>
+                    </div>
+                </div>
+                <p class="m-0">We have taken our 2 dogs to Happy Pets for the last 2 years, and also our cat.
+                    They are friendly staff, and clearly love the animals that they work with.
+                    Our dog is always very excited when he realised where we are and seems to know all the staff. We
+                    have a very barky,
+                    jumpy dog who they manage really well. We would highly recommend it to anyone. They are clearly well
+                    looked after there.
+                </p>
+            </div>
+            <div class="bg-white mx-3 p-4">
+                <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
+                    <img alt="" class="img-fluid" style="width: 80px; height: 80px;"
+                         th:src="@{/images/testimonial-4.jpg}">
+                    <div class="ml-3">
+                        <h5>Ivan Petrov</h5>
+                    </div>
+                </div>
+                <p class="m-0">Left my little puppy here Lola and she had a ball, I would definitely recommend these
+                    guys,
+                    the staff are lovely and extremely friendly, Happy Pets are clean and spacious, if you want clean
+                    and reliable staff book with these guys you won’t be disappointed,
+                    I have recommend Happy Pets to all my friends and family I will definitely be using again in the
+                    future.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer Start -->
+<div th:replace="fragments/footer">Footer</div>
+<!-- Footer End -->
+
+
+<!-- Back to Top -->
+<a class="btn btn-lg btn-primary back-to-top" href="#"><i class="fa fa-angle-double-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/tempusdominus/js/moment.min.js"></script>
+<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<!-- Contact Javascript File -->
+<script src="mail/jqBootstrapValidation.min.js"></script>
+<script src="mail/contact.js"></script>
+
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
+</body>
+
+</html>

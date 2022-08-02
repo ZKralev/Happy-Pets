@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+
+<div th:replace="fragments/head">Head</div>
+
+
+<body>
+<!-- Topbar Start -->
+<div th:replace="fragments/Top">Topbar</div>
+<!-- Topbar End -->
+
+
+<!-- Navbar Start -->
+<div th:replace="fragments/header">Header</div>
+<!-- Navbar End -->
+
+
+<!-- About Start -->
+<div class="container py-5">
+    <div class="row py-5">
+        <div class="col-lg-7 pb-5 pb-lg-0 px-3 px-lg-5">
+            <h4 class="text-secondary mb-3">About Us</h4>
+            <h1 class="display-4 mb-4"><span class="text-primary">Boarding</span> & <span
+                    class="text-secondary">Daycare</span></h1>
+            <h5 class="text-muted mb-3">We offer dog boarding and cat boarding in our dog kennels and cat kennels in
+                Sofia.
+                And how does pet boarding look in Sofia? How are pets treated, and will my dog be taken out or locked
+                in? Will my cat be stressed,
+                will he or she be paid attention to?</h5>
+            <p class="mb-4"> These and many more questions go through an owner’s head needing this service.
+                There are even more questions for people who have already experienced inhumane treatment or have even
+                picked up their pets completely stressed which unfortunately
+                happens all to often in Bulgaria.
+            </p>
+            <ul class="list-inline">
+                <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Best In Industry</h5></li>
+                <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Emergency Services</h5></li>
+                <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>24/7 Customer Support</h5></li>
+            </ul>
+            <a class="btn btn-lg btn-primary mt-3 px-4" href="">Learn More</a>
+        </div>
+        <div class="col-lg-5">
+            <div class="row px-3">
+                <div class="col-12 p-0">
+                    <img alt="" class="img-fluid w-100" src="img/about-1.jpg">
+                </div>
+                <div class="col-6 p-0">
+                    <img alt="" class="img-fluid w-100" src="img/about-2.jpg">
+                </div>
+                <div class="col-6 p-0">
+                    <img alt="" class="img-fluid w-100" src="img/about-3.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+
+<!-- Features Start -->
+<div th:replace="fragments/why-choose">whyChoose</div>
+<!-- Features End -->
+
+
+<!-- Team Start -->
+<div th:replace="fragments/team">team</div>
+<!-- Team End -->
+
+
+<!-- Footer Start -->
+<div th:replace="fragments/footer">Footer</div>
+<!-- Footer End -->
+
+
+<!-- Back to Top -->
+<a class="btn btn-lg btn-primary back-to-top" href="#"><i class="fa fa-angle-double-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/tempusdominus/js/moment.min.js"></script>
+<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<!-- Contact Javascript File -->
+<script src="mail/jqBootstrapValidation.min.js"></script>
+<script src="mail/contact.js"></script>
+
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
+</body>
+
+</html>
