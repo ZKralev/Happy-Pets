@@ -1,11 +1,5 @@
 package bg.softuni.HappyCats.model.DTOS;
 
-import bg.softuni.HappyCats.model.entity.User;
-
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
-import java.time.LocalDateTime;
-
 public class AddCommentDTO {
 
 

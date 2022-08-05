@@ -4,8 +4,7 @@ import bg.softuni.HappyCats.model.enums.Service;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
-import java.util.Date;
+
 
 import static bg.softuni.HappyCats.model.enums.Service.valueOf;
 

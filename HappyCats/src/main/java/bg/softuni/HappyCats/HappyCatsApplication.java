@@ -10,9 +10,4 @@ public class HappyCatsApplication {
         SpringApplication.run(HappyCatsApplication.class, args);
     }
 
-    public void a() {
-
-
-    }
-
 }

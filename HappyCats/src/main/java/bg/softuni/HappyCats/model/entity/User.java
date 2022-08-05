@@ -2,7 +2,6 @@ package bg.softuni.HappyCats.model.entity;
 
 import bg.softuni.HappyCats.model.enums.Plan;
 import bg.softuni.HappyCats.model.enums.UserRoleEnum;
-import net.bytebuddy.implementation.bind.annotation.Default;
 
 import javax.persistence.*;
 import java.util.ArrayList;

@@ -11,9 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
-import javax.servlet.http.Cookie;
 
 @Configuration
 @EnableWebSecurity
@@ -28,7 +26,7 @@ public class HappyPetsSecurityConfiguration {
                         authorizeRequests().
                 // everyone can download static resources (css, js, images)
                         requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
-                // everyone can login and register
+                // everyone can log in and register
                         antMatchers("/", "/login", "/register").permitAll().
                 antMatchers("/**").permitAll().
                 // all other pages are available for logger in users
@@ -55,7 +53,7 @@ public class HappyPetsSecurityConfiguration {
                         logoutSuccessUrl("/").
                 // invalidate the session and delete the cookies
                         invalidateHttpSession(true).
-                deleteCookies("JSESSIONID");;
+                deleteCookies("JSESSIONID");
 
 
         return http.build();

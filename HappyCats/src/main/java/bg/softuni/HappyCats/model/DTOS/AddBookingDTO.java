@@ -1,17 +1,10 @@
 package bg.softuni.HappyCats.model.DTOS;
 
-import bg.softuni.HappyCats.model.enums.Service;
 import org.springframework.format.annotation.DateTimeFormat;
 
-
-import javax.validation.constraints.Future;
 import javax.validation.constraints.FutureOrPresent;
-import javax.validation.constraints.PastOrPresent;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZonedDateTime;
-import java.util.Date;
+
 
 public class AddBookingDTO {
 

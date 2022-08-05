@@ -1,14 +1,11 @@
 package bg.softuni.HappyCats.model.mapper;
 
 import bg.softuni.HappyCats.model.DTOS.AddBookingDTO;
-import bg.softuni.HappyCats.model.DTOS.UserRegistrationDTO;
 import bg.softuni.HappyCats.model.entity.Booking;
-import bg.softuni.HappyCats.model.entity.User;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.processing.Generated;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 
 @Generated(
         value = "org.mapstruct.ap.MappingProcessor",
