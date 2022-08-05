@@ -17,14 +17,12 @@ public class EmailService {
 
   private final TemplateEngine templateEngine;
 
-  private final MessageSource messageSource;
   private final JavaMailSender javaMailSender;
 
   @Autowired
   public EmailService(TemplateEngine templateEngine,
-                      MessageSource messageSource, JavaMailSender javaMailSender) {
+                        JavaMailSender javaMailSender) {
     this.templateEngine = templateEngine;
-    this.messageSource = messageSource;
     this.javaMailSender = javaMailSender;
   }
 
