@@ -7,6 +7,7 @@ import bg.softuni.HappyCats.repository.UserRepository;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.processing.Generated;
+import java.io.IOException;
 import java.util.Optional;
 
 @Generated(
