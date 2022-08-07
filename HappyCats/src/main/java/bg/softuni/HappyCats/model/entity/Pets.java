@@ -1,5 +1,8 @@
 package bg.softuni.HappyCats.model.entity;
 
+import bg.softuni.HappyCats.model.enums.PetsKind;
+
+
 import javax.persistence.*;
 
 @Entity
@@ -13,8 +16,8 @@ public class Pets {
     private String name;
 
     private int age;
-
-    private String kind;
+    @Enumerated(EnumType.STRING)
+    private PetsKind kind;
 
     private String breed;
     @ManyToOne
@@ -39,12 +42,24 @@ public class Pets {
         this.age = age;
     }
 
-    public String getKind() {
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public PetsKind getKind() {
         return kind;
     }
 
-    public void setKind(String kind) {
-        this.kind = kind;
+    public void setKind(int kind) {
+        this.kind = PetsKind.values()[kind];
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
     public String getBreed() {
@@ -55,11 +70,8 @@ public class Pets {
         this.breed = breed;
     }
 
+
     public User getOwner() {
         return owner;
-    }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
     }
 }

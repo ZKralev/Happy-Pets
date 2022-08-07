@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<div th:replace="fragments/head">Head</div>
+
+
+<body>
+    <!-- Topbar Start -->
+    <div th:replace="fragments/Top">Topbar</div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div th:replace="fragments/header">Header</div>
+    <!-- Navbar End -->
+
+    <!-- Booking Start -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row-pets align-items-center">
+                <div class="col-lg-5">
+                    <div class="bg-primary py-5 px-4 px-sm-5">
+                        <form
+                                th:action="@{/pets}"
+                                th:method="post"
+                                th:object="${addPetsModel}"
+                                class="py-5">
+                            <label class="text-center text-white font-weight-bold" >Please fill your information and required date/time, and we will give you a call as soon as possible to confirm everything.</label>
+
+                            <div class="form-group">
+                                <input type="text"
+                                       id="name"
+                                       th:field="*{name}"
+                                       th:errorclass="is-invalid"
+                                       class="form-control border-0 p-4" placeholder="Pet Name" required="required" />
+                                <small id="nameError"
+                                       class="invalid-feedback  errors alert alert-danger">
+                                    Include your pet name.
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <input type="number"
+                                       id="age"
+                                       th:field="*{age}"
+                                       th:errorclass="is-invalid"
+                                       class="form-control border-0 p-4" placeholder="Pet Age" required="required" />
+                                <small id="ageError"
+                                       class="invalid-feedback  errors alert alert-danger">
+                                    Must be a positive number.
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <select class="custom-select border-0 px-4" style="height: 47px;"
+                                        th:field="*{kind}"
+                                        th:errorclass="is-invalid">
+                                    <option value=0>Cat</option>
+                                    <option value=1>Dog</option>
+                                    <option value=2>Hamster</option>
+                                    <option value=3>Rabbit</option>
+                                </select>
+                                <p class="invalid-feedback errors alert alert-danger">
+                                    Service is required.
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <input type="text"
+                                       id="breed"
+                                       th:field="*{breed}"
+                                       th:errorclass="is-invalid"
+                                       class="form-control border-0 p-4" placeholder="Pet Breed" required="required" />
+                                <small id="breedError"
+                                       class="invalid-feedback  errors alert alert-danger">
+                                    Breed name should contain at least 3 letters.
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <input type="text"
+                                       id="owner"
+                                       th:field="*{owner}"
+                                       th:errorclass="is-invalid"
+                                       class="form-control border-0 p-4" placeholder="Your Username for HappyPets" required="required" />
+                                <small id="ownerError"
+                                       class="invalid-feedback  errors alert alert-danger">
+                                    Must write your username correctly.
+                                </small>
+                            </div>
+
+
+                            <div>
+                                <button class="btn btn-dark btn-block border-0 py-3" type="submit">Add now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <img class="img-pets-add" src="images/cat-for-pets-page.jpg" alt=""/>
+                </div>
+    </div>
+        </div>
+    </div>
+    <!-- Booking End -->
+
+
+    <!-- Footer Start -->
+    <div th:replace="fragments/footer">Footer</div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/lib/easing/easing.js"></script>
+    <script src="../static/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="../static/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="../static/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="../static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="../static/mail/jqBootstrapValidation.min.js"></script>
+    <script src="../static/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="../static/js/main.js"></script>
+</body>
+
+</html>

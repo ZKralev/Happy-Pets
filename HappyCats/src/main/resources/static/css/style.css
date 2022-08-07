@@ -640,6 +640,13 @@ pre code {
   margin-right: -15px;
   margin-left: -15px;
 }
+.row-pets {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  justify-content: space-evenly;
+}
 
 .no-gutters {
   margin-right: 0;
@@ -9853,10 +9860,17 @@ h6 {
   list-style-type: none;
 }
 
-mb-4 {
-  position: absolute;
-  left: 700px;
-  top: 200px;
+/*.mb-4 {*/
+/*  position: absolute;*/
+/*  left: 700px;*/
+/*  top: 200px;*/
+/*}*/
+
+.comment-sign {
+  margin-left: 40px;
 }
 
-
+.img-pets-add{
+  max-width: 85%;
+  height: auto;
+}

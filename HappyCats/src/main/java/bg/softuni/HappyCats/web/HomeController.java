@@ -29,4 +29,5 @@ public class HomeController {
     public String price(){
         return "price";
     }
+
 }
