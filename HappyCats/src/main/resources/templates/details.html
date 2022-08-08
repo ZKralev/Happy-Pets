@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<div th:replace="fragments/head">Head</div>
+
+
+<body>
+<!-- Topbar Start -->
+<div th:replace="fragments/Top">Topbar</div>
+<!-- Topbar End -->
+
+
+<!-- Navbar Start -->
+<div th:replace="fragments/header">Header</div>
+<!-- Navbar End -->
+
+
+<!-- About Start -->
+<div th:object="${userDto}" class="container-fluid">
+    <h2 class="text-center text-white mt-5">Details</h2>
+    <div class="offers row mx-auto d-flex flex-row justify-content-center">
+        <div class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0" >
+            <ul class="offer-details list-group list-group-flush">
+                <li class="list-group-item">
+                    <div class="card-text">• UserName <span th:text="*{username}"></span></div>
+                    <div class="card-text">• Email <span th:text="*{email}"></span></div>
+                    <div class="card-text">• Role <span th:text="*{userRole}"></span></div>
+                </li>
+            </ul>
+
+            <a th:href="@{/admin/{id}/edit(id=*{id})}">
+                Edit User
+            </a>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+<!-- Footer Start -->
+<div th:replace="fragments/footer">Footer</div>
+<!-- Footer End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="../static/lib/easing/easing.js"></script>
+<script src="../static/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="../static/lib/tempusdominus/js/moment.min.js"></script>
+<script src="../static/lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="../static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<!-- Contact Javascript File -->
+<script src="../static/mail/jqBootstrapValidation.min.js"></script>
+<script src="../static/mail/contact.js"></script>
+
+<!-- Template Javascript -->
+<script src="../static/js/main.js"></script>
+</body>
+
+</html>

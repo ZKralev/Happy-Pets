@@ -41,6 +41,8 @@ public class AuthController {
                            RedirectAttributes redirectAttributes,
                            HttpServletRequest request) {
 
+        this.authService.createAdminUser();
+
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("userModel", userModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userModel",

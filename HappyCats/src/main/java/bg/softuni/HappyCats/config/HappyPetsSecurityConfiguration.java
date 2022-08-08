@@ -27,7 +27,8 @@ public class HappyPetsSecurityConfiguration {
                 // everyone can download static resources (css, js, images)
                         requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                 // everyone can log in and register
-                        antMatchers("/", "/login", "/register").permitAll().
+                        antMatchers("/", "/login", "/register", "/about", "/booking").permitAll().
+        antMatchers("/admin","/admin/*","/admin/**").hasRole("ADMIN").
                 antMatchers("/**").permitAll().
                 // all other pages are available for logger in users
                         anyRequest().

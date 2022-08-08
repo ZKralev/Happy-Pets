@@ -39,6 +39,19 @@ public class AuthService {
         this.emailService = emailService;
     }
 
+    public void createAdminUser() {
+        var userOpt = this.userRepository.findAll();
+        if (userOpt.isEmpty()) {
+            User admin = new User();
+            admin.setUsername("admin");
+            admin.setPassword(passwordEncoder.encode("admin"));
+            admin.setUserRoles(UserRoleEnum.ADMIN);
+            admin.setEmail("admin@example.com");
+            admin.setFullName("Admin Admin");
+            userRepository.save(admin);
+        }
+    }
+
     public void registerAndLogin(UserRegistrationDTO userRegisterDTO, Locale preferredLocale) {
 
         User newUser = userMapper.userDtoToUserEntity(userRegisterDTO);

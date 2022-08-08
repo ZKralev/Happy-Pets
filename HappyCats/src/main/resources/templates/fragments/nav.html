@@ -28,7 +28,10 @@
         >Booking</a>
         <a th:href="@{/pets}" class="nav-item nav-link" sec:authorize="isAuthenticated()"
            th:text="#{navbar_pets}"
-        >Pets</a>
+        >Add a Pet</a>
+        <a th:href="@{/admin}" class="nav-item nav-link" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}" sec:authorize-url="isAuthenticated()"
+           th:text="#{navbar_admin}"
+        >Admin</a>
         <a th:href="@{/login}" class="nav-item nav-link" sec:authorize="!isAuthenticated()"
            th:text="#{navbar_login}"
         >Login</a>
@@ -43,7 +46,7 @@
 
         <li class="nav-item" sec:authorize="isAuthenticated()">
           <div class="form-inline my-2 my-lg-0 px-3">
-            <div class="text-white" style="position: absolute; left: 1200px; top: 30px;">Welcome, <th:block th:text="${#authentication.principal.fullName}">X</th:block>!</div>
+            <div class="text-white" style="position: absolute; left: 1400px; top: 30px;">Welcome, <th:block th:text="${#authentication.principal.fullName}">X</th:block>!</div>
           </div>
         </li>
 

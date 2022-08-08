@@ -2,6 +2,8 @@ package bg.softuni.HappyCats.model.mapper;
 
 import javax.annotation.processing.Generated;
 
+import bg.softuni.HappyCats.model.DTOS.CreateOrUpdateUserDTO;
+import bg.softuni.HappyCats.model.DTOS.UserDetailDTO;
 import bg.softuni.HappyCats.model.DTOS.UserRegistrationDTO;
 import bg.softuni.HappyCats.model.entity.User;
 import org.springframework.stereotype.Component;
@@ -29,4 +31,44 @@ public class UserMapperImpl implements UserMapper {
 
         return userEntity;
     }
+
+    @Override
+    public CreateOrUpdateUserDTO offerEntityToCreateOrUpdateUserDtoTo(User user) {
+        if ( user == null ) {
+            return null;
+        }
+
+        CreateOrUpdateUserDTO createOrUpdateUserDTO = new CreateOrUpdateUserDTO();
+
+        createOrUpdateUserDTO.setId(user.getId());
+        createOrUpdateUserDTO.setUsername(user.getUsername());
+        createOrUpdateUserDTO.setFullName(user.getFullName());
+        createOrUpdateUserDTO.setEmail(user.getEmail());
+        createOrUpdateUserDTO.setPlan(user.getPlan());
+        createOrUpdateUserDTO.setPets(user.getPets());
+        createOrUpdateUserDTO.setUserRole(user.getUserRoles());
+
+        return createOrUpdateUserDTO;
+    }
+
+    @Override
+    public UserDetailDTO userEntityToUserDetailDto(User user) {
+        if ( user == null ) {
+            return null;
+        }
+
+        UserDetailDTO userDetailDTO = new UserDetailDTO();
+
+        userDetailDTO.setId(user.getId());
+        userDetailDTO.setUsername(user.getUsername());
+        userDetailDTO.setFullName(user.getFullName());
+        userDetailDTO.setEmail(user.getEmail());
+        userDetailDTO.setPlan(user.getPlan());
+        userDetailDTO.setPets(user.getPets());
+        userDetailDTO.setUserRole(user.getUserRoles());
+
+        return userDetailDTO;
+    }
+
+
 }

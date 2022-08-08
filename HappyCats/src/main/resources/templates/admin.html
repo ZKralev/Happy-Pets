@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<div th:replace="fragments/head">Head</div>
+
+
+<body>
+    <!-- Topbar Start -->
+    <div th:replace="fragments/Top">Topbar</div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div th:replace="fragments/header">Header</div>
+    <!-- Navbar End -->
+
+
+    <!-- About Start -->
+    <div class="container py-5">
+        <div class="row py-5">
+            <div class="col-lg-7 pb-5 pb-lg-0 px-3 px-lg-5">
+                <h4 class="text-secondary mb-3">Admin Page</h4>
+                <h1 class="display-4 mb-4"><span class="text-primary">All users</span> & <span class="text-secondary">their roles</span></h1>
+                <div th:each="user : ${users.getContent()}"
+                     th:object="${user}"
+                     >
+                    <div class="card">
+                        <ul>
+                            <li class="list-group-item">
+                                <div class="card-text"><span>• Name <th:block th:text="*{username}"></th:block> </span></div>
+                                <div class="card-text"><span>• Full Name <th:block th:text="*{fullName}"></th:block></span></div>
+                                <div class="card-text"><span>• Email <th:block th:text="*{email}"></th:block></span></div>
+                                <div class="card-text"><span>• Role <th:block th:text="*{userRole}"></th:block> </span></div>
+                            </li>
+                        </ul>
+                        <div class="card-body">
+                            <a class="card-link" href="#" th:href="@{/admin/{userID}(userID=*{id})}">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Footer Start -->
+    <div th:replace="fragments/footer">Footer</div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/lib/easing/easing.js"></script>
+    <script src="../static/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="../static/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="../static/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="../static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="../static/mail/jqBootstrapValidation.min.js"></script>
+    <script src="../static/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="../static/js/main.js"></script>
+</body>
+
+</html>
