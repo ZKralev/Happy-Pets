@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 public class AdminService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
     private final UserMapper userMapper;
 
 

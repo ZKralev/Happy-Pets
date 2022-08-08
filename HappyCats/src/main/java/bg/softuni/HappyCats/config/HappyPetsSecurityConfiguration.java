@@ -2,6 +2,7 @@ package bg.softuni.HappyCats.config;
 
 import bg.softuni.HappyCats.repository.UserRepository;
 import bg.softuni.HappyCats.service.HappyPetsUserDetailsService;
+import org.springframework.boot.autoconfigure.security.StaticResourceLocation;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,8 +29,11 @@ public class HappyPetsSecurityConfiguration {
                         requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                 // everyone can log in and register
                         antMatchers("/", "/login", "/register", "/about", "/booking").permitAll().
-        antMatchers("/admin","/admin/*","/admin/**").hasRole("ADMIN").
-                antMatchers("/**").permitAll().
+        antMatchers("/admin").hasRole("ADMIN").
+                antMatchers("/user").hasRole("ADMIN").
+
+                antMatchers("/user/*").hasRole("ADMIN").
+                antMatchers("/user/**").hasRole("ADMIN").
                 // all other pages are available for logger in users
                         anyRequest().
                 authenticated().and().
