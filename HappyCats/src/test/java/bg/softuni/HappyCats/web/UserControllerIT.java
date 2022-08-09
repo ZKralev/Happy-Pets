@@ -9,8 +9,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -46,68 +50,61 @@ class UserControllerIT {
 
   @Test
   void testDeleteByAnonymousUser_Forbidden() throws Exception {
-    mockMvc.perform(delete("/offers/{id}", testOffer.getId()).
-            with(csrf())
-        ).
-        andExpect(status().is3xxRedirection());
-        //TODO: check redirection url to login w/o schema
+    mockMvc.perform(delete("/user/{id}", testUser.getId()).
+                    with(csrf())
+            ).
+            andExpect(status().is3xxRedirection());
+    //TODO: check redirection url to login w/o schema
   }
-
   @Test
   @WithMockUser(
-      username = "admin@example.com",
+      username = "adminche",
       roles = {"ADMIN", "USER"}
   )
   void testDeleteByAdmin() throws Exception {
-    mockMvc.perform(delete("/offers/{id}", testOffer.getId()).
+    mockMvc.perform(delete("/user/{id}", testUser.getId()).
             with(csrf())
         ).
         andExpect(status().is3xxRedirection()).
-        andExpect(view().name("redirect:/offers/all"));
+        andExpect(view().name("redirect:/admin"));
   }
 
   @WithMockUser(
-      username = "user@example.com",
+      username = "userche",
       roles = "USER"
   )
   @Test
   void testDeleteByOwner() throws Exception {
-    mockMvc.perform(delete("/offers/{id}", testOffer.getId()).
+    mockMvc.perform(delete("/user/{id}", testUser.getId()).
             with(csrf())
         ).
         andExpect(status().is3xxRedirection()).
-        andExpect(view().name("redirect:/offers/all"));
+        andExpect(view().name("redirect:/admin"));
   }
 
   @WithMockUser(
-      username = "user@example.com",
+      username = "userche",
       roles = "USER"
   )
   @Test
   public void testDeleteNotOwned_Forbidden() throws Exception {
-    mockMvc.perform(delete("/offers/{id}", testAdminOffer.getId()).
+    mockMvc.perform(delete("/user/{id}", testAdminOffer.getId()).
             with(csrf())
         ).
         andExpect(status().isForbidden());
   }
 
-  @WithUserDetails(value = "user@example.com",
+  @WithUserDetails(value = "ivan@example.com",
     userDetailsServiceBeanName = "testUserDataService")
   @Test
-  void testAddOffer() throws Exception {
+  void testAddComment() throws Exception {
 
-    mockMvc.perform(post("/offers/add").
-            param("modelId", "1").
-            param("price", "11200").
-            param("engine", "GASOLINE").
-            param("year", "1979").
-            param("mileage", "1000").
-            param("description", "test").
-            param("transmission", "MANUAL").
-            param("imageUrl", "image://test.png").
+    mockMvc.perform(post("/comment").
+            param("email", "ivan@example.com").
+            param("message", "Hello!").
             with(csrf())
         ).
         andExpect(status().is3xxRedirection()).
-        andExpect(redirectedUrl("/offers/all"));
+        andExpect(redirectedUrl("/comment"));
   }
 }

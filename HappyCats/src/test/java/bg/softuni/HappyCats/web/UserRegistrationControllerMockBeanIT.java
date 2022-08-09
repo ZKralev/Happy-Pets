@@ -1,6 +1,6 @@
 package bg.softuni.HappyCats.web;
 
-import bg.softuni.mobilele.service.EmailService;
+import bg.softuni.HappyCats.service.EmailService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -8,7 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import javax.servlet.http.Cookie;
 import java.util.Locale;
 
 import static org.mockito.Mockito.verify;
@@ -29,28 +28,27 @@ public class UserRegistrationControllerMockBeanIT {
 
   @Test
   void testRegistrationPageShown() throws Exception {
-    mockMvc.perform(get("/users/register")).
+    mockMvc.perform(get("/register")).
         andExpect(status().isOk()).
-        andExpect(view().name("auth-register"));
+        andExpect(view().name("register"));
   }
 
   @Test
   void testUserRegistration() throws Exception {
-    mockMvc.perform(post("/users/register").
-        param("email", "anna@example.com").
-        param("firstName", "Anna").
-        param("lastName", "Petrova").
-        param("password", "topsecret").
-        param("confirmPassword", "topsecret").
-        cookie(new Cookie("lang", Locale.GERMAN.getLanguage())).
-        with(csrf())
+    mockMvc.perform(post("/register").
+                    param("username", "annaa").
+                    param("fullName", "Anna Ivanova").
+                    param("email", "anna@example.com").
+                    param("password", "123123").
+                    param("confirmPassword", "123123").
+                    with(csrf())
     ).
         andExpect(status().is3xxRedirection()).
         andExpect(redirectedUrl("/"));
 
     verify(mockEmailService).
         sendRegistrationEmail("anna@example.com",
-            "Anna Petrova",
-            Locale.GERMAN);
+            "annaa",
+            Locale.ENGLISH);
   }
 }

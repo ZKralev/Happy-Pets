@@ -1,7 +1,6 @@
 package bg.softuni.HappyCats.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -57,5 +56,6 @@ public class EmailService {
     ctx.setVariable("userName", userName);
     return templateEngine.process("email/registration", ctx);
   }
+
 
 }

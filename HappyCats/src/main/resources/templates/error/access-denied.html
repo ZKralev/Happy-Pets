@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<title>About</title>
+
+<div th:replace="fragments/head">Head</div>
+
+
+<body>
+<!-- Topbar Start -->
+<div th:replace="fragments/Top">Topbar</div>
+<!-- Topbar End -->
+
+
+<!-- Navbar Start -->
+<div th:replace="fragments/header">Header</div>
+<!-- Navbar End -->
+
+
+<!-- Error Start -->
+<div class="container-fluid">
+  <h5 class="text-center text-white mt-5">
+    MEOW!!!! You have no permission to this page.
+
+    Why don't you <a th:href="@{/login}">Login</a> and try again?
+  </h5>
+</div>
+<!-- Error End -->
+
+
+<!-- Features Start -->
+<div th:replace="fragments/why-choose">whyChoose</div>
+<!-- Features End -->
+
+
+<!-- Footer Start -->
+<div th:replace="fragments/footer">Footer</div>
+<!-- Footer End -->
+
+
+<div th:replace="fragments/all-scripts">scripts</div>
+
+</body>
+
+</html>

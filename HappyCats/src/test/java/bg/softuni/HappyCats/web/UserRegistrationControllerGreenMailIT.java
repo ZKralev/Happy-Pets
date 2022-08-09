@@ -52,12 +52,12 @@ public class UserRegistrationControllerGreenMailIT {
 
   @Test
   void testRegistration() throws Exception {
-    mockMvc.perform(post("/users/register").
-            param("email", "anna@example.com").
-            param("firstName", "Anna").
-            param("lastName", "Petrova").
-            param("password", "topsecret").
-            param("confirmPassword", "topsecret").
+    mockMvc.perform(post("/register").
+                    param("username", "anna").
+                    param("fullName", "Anna Ivanova").
+                    param("email", "ivana@example.com").
+            param("password", "123123").
+            param("confirmPassword", "123123").
             with(csrf())
         ).
         andExpect(status().is3xxRedirection()).
@@ -69,6 +69,6 @@ public class UserRegistrationControllerGreenMailIT {
     MimeMessage welcomeMessage = receivedMessages[0];
 
     Assertions.assertTrue(welcomeMessage.getContent().toString().
-        contains("Anna Petrova"));
+        contains("Friend"));
   }
 }

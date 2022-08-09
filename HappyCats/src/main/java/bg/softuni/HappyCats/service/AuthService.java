@@ -14,7 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
-import java.util.List;
 import java.util.Locale;
 
 
@@ -57,7 +56,6 @@ public class AuthService {
 
         User newUser = userMapper.userDtoToUserEntity(userRegisterDTO);
         newUser.setPassword(passwordEncoder.encode(userRegisterDTO.getPassword()));
-        newUser.setUsername(userRegisterDTO.getUsername());
 
         this.userRepository.save(newUser);
         login(newUser);

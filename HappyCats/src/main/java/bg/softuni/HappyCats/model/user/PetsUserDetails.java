@@ -25,14 +25,7 @@ public class PetsUserDetails implements UserDetails {
     this.fullName = fullName;
     this.authorities = authorities;
   }
-
-  public PetsUserDetails(Long id, String password, String username, String fullName) {
-    this.id = id;
-    this.password = password;
-    this.username = username;
-    this.fullName = fullName;
-  }
-
+  
   public Long getId() {
     return id;
   }

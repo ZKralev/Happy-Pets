@@ -2,7 +2,6 @@ package bg.softuni.HappyCats.config;
 
 import bg.softuni.HappyCats.repository.UserRepository;
 import bg.softuni.HappyCats.service.HappyPetsUserDetailsService;
-import org.springframework.boot.autoconfigure.security.StaticResourceLocation;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,11 +28,10 @@ public class HappyPetsSecurityConfiguration {
                         requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                 // everyone can log in and register
                         antMatchers("/", "/login", "/register", "/about", "/booking").permitAll().
-        antMatchers("/admin").hasRole("ADMIN").
+                antMatchers("/admin").hasRole("ADMIN").
                 antMatchers("/user").hasRole("ADMIN").
-
-                antMatchers("/user/*").hasRole("ADMIN").
                 antMatchers("/user/**").hasRole("ADMIN").
+                antMatchers("/maintenance").permitAll().
                 // all other pages are available for logger in users
                         anyRequest().
                 authenticated().and().
@@ -58,7 +56,10 @@ public class HappyPetsSecurityConfiguration {
                         logoutSuccessUrl("/").
                 // invalidate the session and delete the cookies
                         invalidateHttpSession(true).
-                deleteCookies("JSESSIONID");
+                deleteCookies("JSESSIONID")
+                .and()
+                .exceptionHandling()
+                    .accessDeniedPage("/access-denied");
 
 
         return http.build();
