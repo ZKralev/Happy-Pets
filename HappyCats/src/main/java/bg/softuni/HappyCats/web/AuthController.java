@@ -41,7 +41,7 @@ public class AuthController {
                            RedirectAttributes redirectAttributes,
                            HttpServletRequest request) {
 
-        this.authService.createAdminUser();
+  //      this.authService.createAdminUser();
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("userModel", userModel);

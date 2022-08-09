@@ -13,7 +13,7 @@ public interface UserMapper {
   @Mapping(target = "active", constant = "true")
   User userDtoToUserEntity(UserRegistrationDTO registerDTO);
 
-  CreateOrUpdateUserDTO offerEntityToCreateOrUpdateUserDtoTo(User user);
+  CreateOrUpdateUserDTO userEntityToCreateOrUpdateUserDtoTo(User user);
 
   @Mapping(target = "active", constant = "true")
   UserDetailDTO userEntityToUserDetailDto(User user);

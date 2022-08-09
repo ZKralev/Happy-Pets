@@ -6,6 +6,7 @@ import bg.softuni.HappyCats.model.DTOS.CreateOrUpdateUserDTO;
 import bg.softuni.HappyCats.model.DTOS.UserDetailDTO;
 import bg.softuni.HappyCats.model.DTOS.UserRegistrationDTO;
 import bg.softuni.HappyCats.model.entity.User;
+import bg.softuni.HappyCats.model.enums.UserRoleEnum;
 import org.springframework.stereotype.Component;
 
 @Generated(
@@ -27,13 +28,14 @@ public class UserMapperImpl implements UserMapper {
         userEntity.setEmail( registerDTO.getEmail() );
         userEntity.setPassword( registerDTO.getPassword() );
         userEntity.setFullName( registerDTO.getFullname() );
+        userEntity.setUserRoles(UserRoleEnum.USER);
 
 
         return userEntity;
     }
 
     @Override
-    public CreateOrUpdateUserDTO offerEntityToCreateOrUpdateUserDtoTo(User user) {
+    public CreateOrUpdateUserDTO userEntityToCreateOrUpdateUserDtoTo(User user) {
         if ( user == null ) {
             return null;
         }

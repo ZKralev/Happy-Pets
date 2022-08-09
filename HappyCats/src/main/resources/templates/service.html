@@ -85,6 +85,7 @@
                      th:each="comment : ${comments.getContent()}"
                      th:object="${comment}">
                     <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
+                        <img class="img-fluid" th:src="@{/images/testimonial-1.jpg}" style="width: 80px; height: 80px;" alt="">
                         <div class="ml-3">
                             <div class="card-text"><span>Name: <th:block th:text="*{author.getFullName()}"></th:block> </span></div>
                             <div class="card-text"><span>Posted: <th:block th:text="*{created}"></th:block> </span></div>

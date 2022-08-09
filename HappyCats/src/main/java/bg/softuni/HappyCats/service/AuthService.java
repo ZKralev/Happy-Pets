@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
+import java.util.List;
 import java.util.Locale;
 
 
@@ -39,24 +40,23 @@ public class AuthService {
         this.emailService = emailService;
     }
 
-    public void createAdminUser() {
-        var userOpt = this.userRepository.findAll();
-        if (userOpt.isEmpty()) {
-            User admin = new User();
-            admin.setUsername("admin");
-            admin.setPassword(passwordEncoder.encode("admin"));
-            admin.setUserRoles(UserRoleEnum.ADMIN);
-            admin.setEmail("admin@example.com");
-            admin.setFullName("Admin Admin");
-            userRepository.save(admin);
-        }
-    }
+//    public void createAdminUser() {
+//        var userOpt = this.userRepository.findAll();
+//        if (userOpt.isEmpty()) {
+//            User admin = new User();
+//            admin.setUsername("admin");
+//            admin.setPassword(passwordEncoder.encode("admin"));
+//            admin.setUserRoles(UserRoleEnum.ADMIN);
+//            admin.setEmail("admin@example.com");
+//            admin.setFullName("Admin Admin");
+//            userRepository.save(admin);
+//        }
+//    }
 
     public void registerAndLogin(UserRegistrationDTO userRegisterDTO, Locale preferredLocale) {
 
         User newUser = userMapper.userDtoToUserEntity(userRegisterDTO);
         newUser.setPassword(passwordEncoder.encode(userRegisterDTO.getPassword()));
-        newUser.setUserRoles(UserRoleEnum.USER);
         newUser.setUsername(userRegisterDTO.getUsername());
 
         this.userRepository.save(newUser);

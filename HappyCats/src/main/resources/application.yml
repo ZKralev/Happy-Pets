@@ -11,15 +11,15 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     #open-in-view: false
     defer-datasource-initialization: true
     #properties:
       #hibernate:
         #format_sql: true
-#  sql:
-#    init:
-#      mode: always
+  sql:
+    init:
+      mode: always
 
 
 mail:

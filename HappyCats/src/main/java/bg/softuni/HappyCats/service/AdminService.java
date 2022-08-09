@@ -32,7 +32,7 @@ public class AdminService {
     public Optional<CreateOrUpdateUserDTO> getUserEditDetails(Long userID) {
         return userRepository.
                 findById(userID).
-                map(userMapper::offerEntityToCreateOrUpdateUserDtoTo);
+                map(userMapper::userEntityToCreateOrUpdateUserDtoTo);
     }
 
     public Optional<UserDetailDTO> findUserByID(Long userID) {

@@ -32,6 +32,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Plan plan;
 
+    @Column(name="user_role")
     @Enumerated(EnumType.STRING)
     private UserRoleEnum userRole;
 
@@ -114,9 +115,8 @@ public class User {
         return userRole;
     }
 
-    public User setUserRoles(UserRoleEnum userRoles) {
+    public void setUserRoles(UserRoleEnum userRoles) {
         this.userRole = userRoles;
-        return this;
     }
 
 }

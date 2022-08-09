@@ -46,7 +46,7 @@ public class HappyPetsSecurityConfiguration {
                 // the name of the password form field
                         passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
                 // where to go in case that the login is successful
-                        defaultSuccessUrl("/").
+                        defaultSuccessUrl("/index").
                 // where to go in case that the login failed
                         failureForwardUrl("/login-error").
                 and().
