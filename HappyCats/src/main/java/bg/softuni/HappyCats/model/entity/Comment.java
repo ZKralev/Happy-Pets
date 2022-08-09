@@ -2,6 +2,7 @@ package bg.softuni.HappyCats.model.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "comments")
@@ -54,6 +55,8 @@ public class Comment {
     public void setAuthor(User author) {
         this.author = author;
     }
+
+
 
 }
 

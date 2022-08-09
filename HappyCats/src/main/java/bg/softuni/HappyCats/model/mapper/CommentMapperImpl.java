@@ -1,6 +1,8 @@
 package bg.softuni.HappyCats.model.mapper;
 
 import bg.softuni.HappyCats.model.DTOS.AddCommentDTO;
+import bg.softuni.HappyCats.model.DTOS.CommentDetailsDTO;
+import bg.softuni.HappyCats.model.DTOS.UserDetailDTO;
 import bg.softuni.HappyCats.model.entity.Comment;
 import bg.softuni.HappyCats.model.entity.User;
 import bg.softuni.HappyCats.repository.UserRepository;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.processing.Generated;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Generated(
@@ -37,5 +40,20 @@ public class CommentMapperImpl implements CommentMapper {
         commentEntity.setCreated();
 
         return commentEntity;
+    }
+
+    @Override
+    public CommentDetailsDTO commentEntityToCommentDetailDto(Comment comment) {
+        if ( comment == null ) {
+            return null;
+        }
+
+        CommentDetailsDTO commentDetailsDTO = new CommentDetailsDTO();
+
+        commentDetailsDTO.setAuthor(comment.getAuthor());
+        commentDetailsDTO.setCreated(comment.getCreated());
+        commentDetailsDTO.setMessage(comment.getMessage());
+
+        return commentDetailsDTO;
     }
 }
