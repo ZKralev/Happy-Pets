@@ -48,6 +48,8 @@
                                     <input type="datetime-local"
                                            th:field="*{reservationDateTime}"
                                            th:errorclass="is-invalid"
+                                           id="date-time"
+                                           name="date-time"
                                            class="form-control border-0 p-4 datetimepicker-input" placeholder="Reservation Date"/>
                                     <small id="dateError"
                                            class="invalid-feedback  errors alert alert-danger">
@@ -60,7 +62,9 @@
                                 <label class="text-center text-white font-weight-bold" >Service</label>
                                 <select class="custom-select border-0 px-4" style="height: 47px;"
                                         th:field="*{service}"
-                                        th:errorclass="is-invalid">
+                                        th:errorclass="is-invalid"
+                                id="service"
+                                name="service">
                                     <option value=0>Boarding</option>
                                     <option value=1>Feeding</option>
                                     <option value=2>Grooming</option>

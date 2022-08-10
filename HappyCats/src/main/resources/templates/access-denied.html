@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<title>About</title>
+<title>Access-Denied</title>
 
 <div th:replace="fragments/head">Head</div>
 
@@ -19,18 +19,17 @@
 
 <!-- Error Start -->
 <div class="container-fluid">
-  <h5 class="text-center text-white mt-5">
-    MEOW!!!! You have no permission to this page.
+  <h4 class="display-4 text-center m-3">
+    <span class="text-primary">MEOW!!!!</span>  You have no permission to enter this page.
+    <br/>
+    <img  class="text-center" src="images/access.jpg" alt="access" style="height: 300px; width: 430px"/>
+  </h4>
 
-    Why don't you <a th:href="@{/login}">Login</a> and try again?
-  </h5>
+  <h5  class="text-center mt-5">Would you please <a th:href="@{/login}">Login</a> and try again?</h5>
 </div>
 <!-- Error End -->
 
 
-<!-- Features Start -->
-<div th:replace="fragments/why-choose">whyChoose</div>
-<!-- Features End -->
 
 
 <!-- Footer Start -->

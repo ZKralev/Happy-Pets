@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.Locale;
+import java.util.Optional;
 
 
 @Service
@@ -39,20 +40,13 @@ public class AuthService {
         this.emailService = emailService;
     }
 
-//    public void createAdminUser() {
-//        var userOpt = this.userRepository.findAll();
-//        if (userOpt.isEmpty()) {
-//            User admin = new User();
-//            admin.setUsername("admin");
-//            admin.setPassword(passwordEncoder.encode("admin"));
-//            admin.setUserRoles(UserRoleEnum.ADMIN);
-//            admin.setEmail("admin@example.com");
-//            admin.setFullName("Admin Admin");
-//            userRepository.save(admin);
-//        }
-//    }
 
     public void registerAndLogin(UserRegistrationDTO userRegisterDTO, Locale preferredLocale) {
+
+        Optional<User> userExists = userRepository.findByUsername(userRegisterDTO.getUsername());
+        if(userExists.isPresent()){
+            throw new RuntimeException();
+        }
 
         User newUser = userMapper.userDtoToUserEntity(userRegisterDTO);
         newUser.setPassword(passwordEncoder.encode(userRegisterDTO.getPassword()));
@@ -60,7 +54,7 @@ public class AuthService {
         this.userRepository.save(newUser);
         login(newUser);
         emailService.sendRegistrationEmail(newUser.getEmail(),
-                newUser.getFullName(), preferredLocale);
+                newUser.getUsername(), preferredLocale);
     }
 
 

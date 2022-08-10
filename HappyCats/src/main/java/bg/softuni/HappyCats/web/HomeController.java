@@ -25,4 +25,10 @@ public class HomeController {
         return "price";
     }
 
+    @GetMapping("/access")
+    public String access(){
+        return "access-denied";
+    }
+
+
 }

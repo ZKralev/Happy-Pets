@@ -53,7 +53,7 @@ public class UserRegistrationControllerGreenMailIT {
   @Test
   void testRegistration() throws Exception {
     mockMvc.perform(post("/register").
-                    param("username", "anna").
+                    param("username", "annna").
                     param("fullName", "Anna Ivanova").
                     param("email", "ivana@example.com").
             param("password", "123123").

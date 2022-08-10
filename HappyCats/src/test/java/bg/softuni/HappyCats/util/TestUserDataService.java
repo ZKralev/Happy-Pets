@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.Optional;
 
 @Service
@@ -29,7 +30,7 @@ public class TestUserDataService implements UserDetailsService {
     return new PetsUserDetails(1L,
             "123123",
             username,
-            "Test test",
-            auth);
+            "Test",
+            null);
   }
 }

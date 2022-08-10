@@ -27,14 +27,15 @@ public class HappyPetsSecurityConfiguration {
                 // everyone can download static resources (css, js, images)
                         requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                 // everyone can log in and register
-                        antMatchers("/", "/login", "/register", "/about", "/booking").permitAll().
+                        antMatchers("/", "/login", "/register", "/about", "/access", "/service" , "/price").permitAll().
                 antMatchers("/admin").hasRole("ADMIN").
                 antMatchers("/user").hasRole("ADMIN").
                 antMatchers("/user/**").hasRole("ADMIN").
                 antMatchers("/maintenance").permitAll().
                 // all other pages are available for logger in users
-                        anyRequest().
-                authenticated().and().
+                        anyRequest().authenticated()
+                .and().exceptionHandling().accessDeniedPage("/access")
+                .and().
                 // configuration of form login
                         formLogin().
                 // the custom login form
@@ -57,9 +58,8 @@ public class HappyPetsSecurityConfiguration {
                 // invalidate the session and delete the cookies
                         invalidateHttpSession(true).
                 deleteCookies("JSESSIONID")
-                .and()
-                .exceptionHandling()
-                    .accessDeniedPage("/access-denied");
+
+        ;
 
 
         return http.build();

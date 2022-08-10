@@ -36,6 +36,8 @@ public class TestDataUtils {
 
     User admin = new User();
 
+      admin.setEmail("admin@example.com");
+      admin.setPassword("4b148b365433c559fdc07a0742712e88b61d5e23a52bb10206c308908e2e67836ecb3ff5714006ea");
        admin.setUsername(username);
        admin.setFullName("Admin Adminov");
        admin.setUserRoles(UserRoleEnum.ADMIN);
@@ -46,8 +48,10 @@ public class TestDataUtils {
   public User createTestUser(String username) {
 
     User user = new User();
+    user.setEmail("admin2@example.com");
+    user.setPassword("4b148b365433c559fdc07a0742712e88b61d5e23a52bb10206c308908e2e67836ecb3ff5714006ea");
     user.setUsername(username);
-    user.setFullName("Ivancho NeAdminov");
+    user.setFullName("Admin NeAdminov");
     user.setUserRoles(UserRoleEnum.USER);
 
     return userRepository.save(user);
@@ -55,26 +59,27 @@ public class TestDataUtils {
 
   public Booking createTestBooking(User testUser) {
     Booking booking = new Booking();
-    booking.setEmail("ivan@example.com");
+    booking.setEmail(testUser.getEmail());
     booking.setName("ivan");
     booking.setService(Service.GROOMING);
-    booking.setReservationDateTime(LocalDateTime.parse("10-17-2021 15:40:10"));
 
     return bookingRepository.save(booking);
   }
 
-  public Comment createTestComment(User testAdmin) {
-    Comment comment = new Comment();
-        comment.setMessage("Hello");
+//  public Comment createTestComment(User testAdmin) {
+//    Comment comment = new Comment();
+//    comment.setAuthor(testAdmin);
+//    comment.setMessage("Hello");
+//
+//    return commentRepository.save(comment);
+//  }
 
-    return commentRepository.save(comment);
-  }
-
-  public Pets createTestPet(Pets Pets) {
+  public Pets createTestPet(User owner) {
     Pets pet = new Pets();
     pet.setBreed("sharpei");
     pet.setKind(1);
     pet.setName("lola");
+    pet.setOwner(owner);
     return petsRepository.save(pet);
   }
 
