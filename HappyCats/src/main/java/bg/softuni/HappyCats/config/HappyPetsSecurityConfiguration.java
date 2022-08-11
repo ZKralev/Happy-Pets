@@ -27,11 +27,10 @@ public class HappyPetsSecurityConfiguration {
                 // everyone can download static resources (css, js, images)
                         requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                 // everyone can log in and register
-                        antMatchers("/", "/login", "/register", "/about", "/access", "/service" , "/price").permitAll().
+                        antMatchers("/", "/index", "/login", "/register", "/about", "/access", "/service" , "/maintenance", "/price").permitAll().
                 antMatchers("/admin").hasRole("ADMIN").
                 antMatchers("/user").hasRole("ADMIN").
                 antMatchers("/user/**").hasRole("ADMIN").
-                antMatchers("/maintenance").permitAll().
                 // all other pages are available for logger in users
                         anyRequest().authenticated()
                 .and().exceptionHandling().accessDeniedPage("/access")
@@ -45,7 +44,7 @@ public class HappyPetsSecurityConfiguration {
                 // the name of the password form field
                         passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
                 // where to go in case that the login is successful
-                        defaultSuccessUrl("/index").
+                        defaultSuccessUrl("/", true).
                 // where to go in case that the login failed
                         failureForwardUrl("/login-error").
                 and().

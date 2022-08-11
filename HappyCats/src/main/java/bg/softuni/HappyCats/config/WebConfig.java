@@ -1,5 +1,6 @@
 package bg.softuni.HappyCats.config;
 
+import bg.softuni.HappyCats.service.MaintenanceInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -10,12 +11,16 @@ public class WebConfig implements WebMvcConfigurer {
 
   private final LocaleChangeInterceptor localeChangeInterceptor;
 
-  public WebConfig(LocaleChangeInterceptor localeChangeInterceptor) {
+  private final MaintenanceInterceptor maintenanceInterceptor;
+
+  public WebConfig(LocaleChangeInterceptor localeChangeInterceptor, MaintenanceInterceptor maintenanceInterceptor) {
     this.localeChangeInterceptor = localeChangeInterceptor;
+    this.maintenanceInterceptor = maintenanceInterceptor;
   }
 
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
     registry.addInterceptor(localeChangeInterceptor);
+    registry.addInterceptor(maintenanceInterceptor);
   }
 }
