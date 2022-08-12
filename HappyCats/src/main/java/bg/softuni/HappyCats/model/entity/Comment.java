@@ -19,6 +19,8 @@ public class Comment {
     @ManyToOne
     private User author;
 
+    private String email;
+
 
     public Comment() {}
 
@@ -57,6 +59,12 @@ public class Comment {
     }
 
 
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
 

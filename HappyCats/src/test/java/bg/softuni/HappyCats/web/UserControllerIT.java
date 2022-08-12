@@ -39,21 +39,25 @@ class UserControllerIT {
   void tearDown() {
     testDataUtils.cleanUpDatabase();
   }
-  @WithUserDetails(value = "user@example.com",
-          userDetailsServiceBeanName = "testUserDataService")
+
+
   @Test
+  @WithMockUser(
+          username = "zdravko",
+          password = "admin"
+  )
   void testAddComment() throws Exception {
     mockMvc.perform(post("/comment").
-            param("email", "ivan@example.com").
+            param("email", "zdravko@example.com").
             param("message", "Hello!").
             with(csrf())
         ).
         andExpect(status().is3xxRedirection()).
-        andExpect(redirectedUrl("/comment"));
+        andExpect(redirectedUrl("/index"));
   }
   @Test
   @WithMockUser(
-          username = "ivan",
+          username = "zdravko",
           password = "admin"
   )
   void testAddBooking() throws Exception {
@@ -67,4 +71,23 @@ class UserControllerIT {
             andExpect(status().is3xxRedirection()).
             andExpect(redirectedUrl("/booking"));
   }
+
+  @Test
+  @WithMockUser(
+          username = "zdravko",
+          password = "admin"
+  )
+  void testAddPet() throws Exception {
+    mockMvc.perform(post("/pets").
+                    param("name", "ivancho").
+                    param("age", "2").
+                    param("kind", "Cat").
+                    param("breed", "British").
+                    param("owner", "zdravko").
+                    with(csrf())
+            ).
+            andExpect(status().is3xxRedirection()).
+            andExpect(redirectedUrl("/pets"));
+  }
+
 }

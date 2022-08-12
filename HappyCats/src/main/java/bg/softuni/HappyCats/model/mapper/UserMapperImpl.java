@@ -49,7 +49,13 @@ public class UserMapperImpl implements UserMapper {
         createOrUpdateUserDTO.setEmail(user.getEmail());
         createOrUpdateUserDTO.setPlan(user.getPlan());
         createOrUpdateUserDTO.setPets(user.getPets());
-        createOrUpdateUserDTO.setUserRole(user.getUserRoles());
+        String role;
+        if(user.getUserRoles() == UserRoleEnum.ADMIN){
+            role = "0";
+        }else{
+            role = "1";
+        }
+        createOrUpdateUserDTO.setUserRole(role);
 
         return createOrUpdateUserDTO;
     }
@@ -68,7 +74,14 @@ public class UserMapperImpl implements UserMapper {
         userDetailDTO.setEmail(user.getEmail());
         userDetailDTO.setPlan(user.getPlan());
         userDetailDTO.setPets(user.getPets());
-        userDetailDTO.setUserRole(user.getUserRoles());
+        String role;
+        if(user.getUserRoles() == UserRoleEnum.ADMIN){
+            role = "0";
+        }else{
+            role = "1";
+        }
+
+        userDetailDTO.setUserRole(role);
 
         return userDetailDTO;
     }

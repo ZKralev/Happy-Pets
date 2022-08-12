@@ -54,7 +54,9 @@
                             <div class="form-group">
                                 <select class="custom-select border-0 px-4" style="height: 47px;"
                                         th:field="*{kind}"
-                                        th:errorclass="is-invalid">
+                                        th:errorclass="is-invalid"
+                                id="kind"
+                                name="kind">
                                     <option value=0>Cat</option>
                                     <option value=1>Dog</option>
                                     <option value=2>Hamster</option>
@@ -67,6 +69,7 @@
                             <div class="form-group">
                                 <input type="text"
                                        id="breed"
+                                       name="breed"
                                        th:field="*{breed}"
                                        th:errorclass="is-invalid"
                                        class="form-control border-0 p-4" placeholder="Pet Breed" required="required" />

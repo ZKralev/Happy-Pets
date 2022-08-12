@@ -3,6 +3,7 @@ package bg.softuni.HappyCats.web;
 import bg.softuni.HappyCats.model.DTOS.AddCommentDTO;
 import bg.softuni.HappyCats.service.CommentService;
 import bg.softuni.HappyCats.service.HappyPetsUserDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ public class CommentsController {
 
     private CommentService commentService;
 
+    @Autowired
     public CommentsController(CommentService commentService) {
         this.commentService = commentService;
     }

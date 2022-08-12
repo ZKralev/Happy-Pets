@@ -17,6 +17,8 @@ spring:
     #properties:
       #hibernate:
         #format_sql: true
+    show-sql: false
+
   sql:
     init:
       mode: always

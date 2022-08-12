@@ -1,5 +1,6 @@
 package bg.softuni.HappyCats.model.mapper;
 
+import bg.softuni.HappyCats.exception.ObjectNotFoundException;
 import bg.softuni.HappyCats.model.DTOS.AddPetsDTO;
 import bg.softuni.HappyCats.model.entity.Pets;
 import bg.softuni.HappyCats.model.entity.User;
@@ -35,6 +36,9 @@ public class PetsMapperImpl implements PetsMapper {
         pet.setBreed(addPetsDTO.getBreed());
         pet.setName(addPetsDTO.getName());
         Optional<User> user = userRepository.findByUsername(addPetsDTO.getOwner());
+        if (user.isEmpty()){
+            throw new ObjectNotFoundException("We wore unable to find your account, please write your username correctly!");
+        }
         pet.setOwner(user.get());
 
         return pet;

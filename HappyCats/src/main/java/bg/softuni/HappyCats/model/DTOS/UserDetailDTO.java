@@ -82,7 +82,13 @@ public class UserDetailDTO {
         return userRole;
     }
 
-    public void setUserRole(UserRoleEnum userRole) {
-        this.userRole = userRole;
+
+    public void setUserRole(String userRole) {
+        if (userRole.equals("0")){
+            this.userRole = UserRoleEnum.ADMIN;
+        }
+        if (userRole.equals("1")){
+            this.userRole = UserRoleEnum.USER;
+        }
     }
 }

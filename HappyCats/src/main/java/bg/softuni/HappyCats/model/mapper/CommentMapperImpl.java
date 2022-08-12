@@ -35,7 +35,13 @@ public class CommentMapperImpl implements CommentMapper {
 
         Comment commentEntity = new Comment();
         Optional<User> user = userRepository.findByEmail(addCommentDTO.getEmail());
-        commentEntity.setAuthor(user.get());
+        if (user.isPresent()){
+            commentEntity.setAuthor(user.get());
+            commentEntity.setEmail(user.get().getEmail());
+        }else {
+            commentEntity.setAuthor(null);
+            commentEntity.setEmail(addCommentDTO.getEmail());
+        }
         commentEntity.setMessage(addCommentDTO.getMessage());
         commentEntity.setCreated();
 
