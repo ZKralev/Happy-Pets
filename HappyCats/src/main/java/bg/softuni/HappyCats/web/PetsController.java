@@ -1,8 +1,11 @@
 package bg.softuni.HappyCats.web;
-
 import bg.softuni.HappyCats.model.DTOS.AddPetsDTO;
 import bg.softuni.HappyCats.service.HappyPetsUserDetailsService;
 import bg.softuni.HappyCats.service.PetsService;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,4 +51,18 @@ public class PetsController {
         return "redirect:/pets";
     }
 
+
+    @GetMapping("/all-pets")
+    public String allUsers(
+            Model model,
+            @PageableDefault(
+                    sort = "name",
+                    direction = Sort.Direction.ASC,
+                    page = 0,
+                    size = 5) Pageable pageable) {
+
+        model.addAttribute("pets", petsService.getAllPets(pageable));
+
+        return "all-pets";
+    }
 }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<title>All Pets</title>
+
+
+<div th:replace="fragments/head">Head</div>
+
+
+<body>
+    <!-- Topbar Start -->
+    <div th:replace="fragments/Top">Topbar</div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div th:replace="fragments/header">Header</div>
+    <!-- Navbar End -->
+
+
+    <!-- About Start -->
+    <div class="container py-5">
+        <div class="row py-5">
+            <div class="col-lg-7 pb-5 pb-lg-0 px-3 px-lg-5">
+                <h4 class="text-secondary mb-3">All Pets</h4>
+                <h1 class="display-4 mb-4"><span class="text-primary">All pets</span> & <span class="text-secondary">their owners</span></h1>
+                    <div class="card" th:each="pet : ${pets.getContent()}"
+                         th:object="${pet}">
+
+                                <div class="card-text"><span>• Name: <th:block th:text="*{name}"></th:block> </span></div>
+                                <div class="card-text"><span>• Age: <th:block th:text="*{age}"></th:block></span></div>
+                                <div class="card-text"><span>• Kind: <th:block th:text="*{kind}"></th:block></span></div>
+                                <div class="card-text"><span>• Breed: <th:block th:text="*{breed}"></th:block> </span></div>
+                                <div class="card-text"><span>• Owner: <th:block th:text="*{owner.username}"></th:block> </span></div>
+
+
+                    </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Footer Start -->
+    <div th:replace="fragments/footer">Footer</div>
+    <!-- Footer End -->
+
+
+    <div th:replace="fragments/all-scripts">scripts</div>
+
+</body>
+
+</html>

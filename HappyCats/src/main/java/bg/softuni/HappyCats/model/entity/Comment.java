@@ -1,6 +1,7 @@
 package bg.softuni.HappyCats.model.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -18,7 +19,7 @@ public class Comment {
 
     @ManyToOne
     private User author;
-
+    @Email
     private String email;
 
 

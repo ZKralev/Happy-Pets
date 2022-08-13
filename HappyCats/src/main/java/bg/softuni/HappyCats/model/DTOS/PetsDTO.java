@@ -1,31 +1,18 @@
-package bg.softuni.HappyCats.model.entity;
+package bg.softuni.HappyCats.model.DTOS;
 
+import bg.softuni.HappyCats.model.entity.User;
 import bg.softuni.HappyCats.model.enums.PetsKind;
 
 
-import javax.persistence.*;
-import javax.validation.constraints.Positive;
+public class PetsDTO {
 
-@Entity
-@Table(name = "pets")
-public class Pets {
-
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
     private String name;
-
-    @Positive
     private int age;
-    @Enumerated(EnumType.STRING)
     private PetsKind kind;
-
     private String breed;
-    @ManyToOne
     private User owner;
 
-    public Pets() {
+    public PetsDTO() {
     }
 
     public String getName() {
@@ -44,24 +31,12 @@ public class Pets {
         this.age = age;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public PetsKind getKind() {
         return kind;
     }
 
-    public void setKind(int kind) {
-        this.kind = PetsKind.values()[kind];
-    }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setKind(PetsKind kind) {
+        this.kind = kind;
     }
 
     public String getBreed() {
@@ -72,10 +47,11 @@ public class Pets {
         this.breed = breed;
     }
 
-
     public User getOwner() {
         return owner;
     }
 
-
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
 }
