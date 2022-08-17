@@ -1,10 +1,9 @@
 package bg.softuni.HappyCats.model.DTOS;
 
 import bg.softuni.HappyCats.model.entity.Pets;
-import bg.softuni.HappyCats.model.enums.Plan;
+import bg.softuni.HappyCats.model.enums.PlanEnum;
 import bg.softuni.HappyCats.model.enums.UserRoleEnum;
 
-import javax.persistence.*;
 import java.util.List;
 
 public class UserDetailDTO {
@@ -21,7 +20,7 @@ public class UserDetailDTO {
 
     private List<Pets> pets;
 
-    private Plan plan;
+    private PlanEnum planEnum;
 
     private UserRoleEnum userRole;
 
@@ -70,16 +69,16 @@ public class UserDetailDTO {
         this.pets = pets;
     }
 
-    public Plan getPlan() {
-        return plan;
+    public PlanEnum getPlan() {
+        return planEnum;
     }
 
-    public void setPlan(Plan plan) {
-        this.plan = plan;
+    public void setPlan(PlanEnum planEnum) {
+        this.planEnum = planEnum;
     }
 
-    public UserRoleEnum getUserRole() {
-        return userRole;
+    public String getUserRole() {
+        return userRole.toString();
     }
 
 

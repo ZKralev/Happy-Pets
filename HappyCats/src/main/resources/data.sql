@@ -1,12 +1,13 @@
 
+
 -- some test users
 INSERT INTO users (id, username, password, email, full_name, user_role)
 VALUES (1, 'zdravko', '4b148b365433c559fdc07a0742712e88b61d5e23a52bb10206c308908e2e67836ecb3ff5714006ea', 'zdravko@example.com' ,'Zdravko Kralev', 'ADMIN');
 
-INSERT INTO users (id, username, password, email, full_name, user_role)
+INSERT INTO users (id, username, password, email, full_name, user_role )
 VALUES (2, 'stoyan', 'cf42fc3d2ccd6f7438778a61bffe940bfeee00cb6eea44bd510658c19c69a72b572a13ee09c51a8f', 'stoyan@example.com' ,'Stoyan Stoyanov', 'USER');
 
-INSERT INTO users (id, username, password, email, full_name, user_role)
+INSERT INTO users (id, username, password, email, full_name, user_role )
 VALUES (3, 'petyr', '74dc9ebd4377bbce15a0614ecad422955ad0f6d95fee746c31d3d39d6cf959d53cc93a3992c06855', 'petyr@example.com' ,'Petyr Petrov', 'USER');
 
 -- comments

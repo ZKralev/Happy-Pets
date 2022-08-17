@@ -1,5 +1,5 @@
 package bg.softuni.HappyCats.model.enums;
 
-public enum Plan {
+public enum PlanEnum {
     BASIC, STANDARD, PREMIUM
 }

@@ -1,3 +1,7 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<title>User Details</title>
+
 <div
 
         th:object="${userDto}" class="container-fluid">
@@ -6,31 +10,11 @@
         <div class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0" >
             <ul class="offer-details list-group list-group-flush">
                 <li class="list-group-item">
-                    <div class="card-text">• UserName <span th:text="*{username}"></span></div>
-                    <div class="card-text">• Email <span th:text="*{email}"></span></div>
-                    <form
-                            th:action="@{/user/}"
-                            th:method="POST"
-                            th:object="${userDto}"
-                    >
-                        <div>
-                            <div class="col-auto">
-                                <label for="inputUserRole" class="col-form-label ">User Role: </label>
-                            </div>
-                            <div class="form-group">
-                                <select class="custom-select border-0 px-4" style="height: 47px;"
-                                        th:field="*{userRole}"
-                                        id="inputUserRole"
-                                        name="inputUserRole">
-                                    <option value="0">ADMIN</option>
-                                    <option value="1">USER</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div>
-                            <button class="btn btn-dark btn-block border-0 py-3" type="submit">Change User Role Now</button>
-                        </div>
-                    </form>
+                    <div class="card-text">• UserName: <span th:text="*{username}"></span></div>
+                    <div class="card-text">• Email: <span th:text="*{email}"></span></div>
+                    <a th:href="@{/makeAdmin/{id}(id=${userDto.id})}" class="btn btn-primary btn-block p-3" style="border-radius: 0;"  >Change Role to ADMIN</a>
+                    <br>
+                    <a th:href="@{/makeUser/{id}(id=${userDto.id})}" class="btn btn-primary btn-block p-3" style="border-radius: 0;"  >Change Role to USER</a>
                 </li>
             </ul>
         </div>

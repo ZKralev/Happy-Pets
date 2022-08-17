@@ -16,7 +16,7 @@
     <!-- Navbar End -->
 
 
-    <!-- Pricing Plan Start -->
+    <!-- Pricing PlanEnum Start -->
     <div class="container-fluid bg-light pt-5 pb-4">
         <div class="container py-5">
             <div class="d-flex flex-column text-center mb-5">
@@ -44,7 +44,8 @@
                             </ul>
                         </div>
                         <div class="card-footer border-0 p-0">
-                            <a href="/booking" class="btn btn-primary btn-block p-3" style="border-radius: 0;">Signup Now</a>
+                            <a href="/booking" class="btn btn-primary btn-block p-3" style="border-radius: 0;">Book Now</a>
+                            <a href="/addPlanBasic" class="btn btn-primary btn-block p-3" style="border-radius: 0;" sec:authorize="isAuthenticated()" >Add This Plan</a>
                         </div>
                     </div>
                 </div>
@@ -68,7 +69,8 @@
                             </ul>
                         </div>
                         <div class="card-footer border-0 p-0">
-                            <a href="/booking" class="btn btn-secondary btn-block p-3" style="border-radius: 0;">Signup Now</a>
+                            <a href="/booking" class="btn btn-primary btn-block p-3" style="border-radius: 0;">Book Now</a>
+                            <a href="/addPlanStandard" class="btn btn-primary btn-block p-3" style="border-radius: 0;" sec:authorize="isAuthenticated()" >Add This Plan</a>
                         </div>
                     </div>
                 </div>
@@ -92,14 +94,15 @@
                             </ul>
                         </div>
                         <div class="card-footer border-0 p-0">
-                            <a href="/booking" class="btn btn-primary btn-block p-3" style="border-radius: 0;">Signup Now</a>
+                            <a href="/booking" class="btn btn-primary btn-block p-3" style="border-radius: 0;">Book Now</a>
+                            <a href="/addPlanPremium" class="btn btn-primary btn-block p-3" style="border-radius: 0;" sec:authorize="isAuthenticated()" >Add This Plan</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Pricing Plan End -->
+    <!-- Pricing PlanEnum End -->
 
 
     <!-- Footer Start -->

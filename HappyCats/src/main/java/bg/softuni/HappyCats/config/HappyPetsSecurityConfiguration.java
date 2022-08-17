@@ -28,8 +28,10 @@ public class HappyPetsSecurityConfiguration {
                         requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                 // everyone can log in and register
                         antMatchers("/", "/index", "/login", "/register", "/about", "/access", "/service" , "/maintenance", "/price").permitAll().
-                antMatchers("/admin").hasRole("ADMIN").
+                antMatchers("/users").hasRole("ADMIN").
                 antMatchers("/user").hasRole("ADMIN").
+                antMatchers("/makeAdmin/**").hasRole("ADMIN").
+                antMatchers("/makeUser/**").hasRole("ADMIN").
                 antMatchers("/user/**").hasRole("ADMIN").
                 // all other pages are available for logger in users
                         anyRequest().authenticated()

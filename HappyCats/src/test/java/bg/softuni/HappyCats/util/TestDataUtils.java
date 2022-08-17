@@ -14,20 +14,18 @@ import bg.softuni.HappyCats.repository.UserRepository;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 @Component
 public class TestDataUtils {
 
   private final UserRepository userRepository;
-  private final BookingRepository bookingRepository;
-  private final CommentRepository commentRepository;
+
   private final PetsRepository petsRepository;
 
   public TestDataUtils(UserRepository userRepository, BookingRepository bookingRepository, CommentRepository commentRepository, PetsRepository petsRepository) {
     this.userRepository = userRepository;
-    this.bookingRepository = bookingRepository;
-    this.commentRepository = commentRepository;
     this.petsRepository = petsRepository;
   }
 
@@ -57,36 +55,10 @@ public class TestDataUtils {
     return userRepository.save(user);
   }
 
-  public Booking createTestBooking(User testUser) {
-    Booking booking = new Booking();
-    booking.setEmail(testUser.getEmail());
-    booking.setName("ivan");
-    booking.setService(Service.GROOMING);
-
-    return bookingRepository.save(booking);
-  }
-
-//  public Comment createTestComment(User testAdmin) {
-//    Comment comment = new Comment();
-//    comment.setAuthor(testAdmin);
-//    comment.setMessage("Hello");
-//
-//    return commentRepository.save(comment);
-//  }
-
-  public Pets createTestPet(User owner) {
-    Pets pet = new Pets();
-    pet.setBreed("sharpei");
-    pet.setKind(1);
-    pet.setName("lola");
-    pet.setOwner(owner);
-    return petsRepository.save(pet);
-  }
 
   public void cleanUpDatabase() {
     userRepository.deleteAll();
     petsRepository.deleteAll();
-    commentRepository.deleteAll();
-    bookingRepository.deleteAll();
+
   }
 }

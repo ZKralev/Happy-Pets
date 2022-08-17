@@ -1,6 +1,6 @@
 package bg.softuni.HappyCats.model.entity;
 
-import bg.softuni.HappyCats.model.enums.Plan;
+import bg.softuni.HappyCats.model.enums.PlanEnum;
 import bg.softuni.HappyCats.model.enums.UserRoleEnum;
 
 import javax.persistence.*;
@@ -29,8 +29,6 @@ public class User {
     @OneToMany
     private List<Pets> pets;
 
-    @Enumerated(EnumType.STRING)
-    private Plan plan;
 
     @Column(name="user_role")
     @Enumerated(EnumType.STRING)
@@ -103,13 +101,6 @@ public class User {
         this.pets = pets;
     }
 
-    public Plan getPlan() {
-        return plan;
-    }
-
-    public void setPlan(Plan plan) {
-        this.plan = plan;
-    }
 
     public UserRoleEnum getUserRoles() {
         return userRole;
@@ -119,4 +110,14 @@ public class User {
         this.userRole = userRoles;
     }
 
+    @ManyToOne()
+    private Plan plans;
+
+    public Plan getPlans() {
+        return plans;
+    }
+
+    public void setPlans(Plan plans) {
+        this.plans = plans;
+    }
 }

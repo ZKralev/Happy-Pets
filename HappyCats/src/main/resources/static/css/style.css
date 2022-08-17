@@ -9875,3 +9875,9 @@ h6 {
   max-width: 85%;
   height: auto;
 }
+
+.name-change-form {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
