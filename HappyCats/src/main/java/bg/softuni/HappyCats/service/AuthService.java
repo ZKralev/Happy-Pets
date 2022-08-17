@@ -41,6 +41,7 @@ public class AuthService {
     }
 
 
+
     public void registerAndLogin(UserRegistrationDTO userRegisterDTO, Locale preferredLocale) {
 
         Optional<User> userExists = userRepository.findByUsername(userRegisterDTO.getUsername());
@@ -75,4 +76,7 @@ public class AuthService {
     }
 
 
+    public User getUserByUsername(String pesho) {
+        return userRepository.findByUsername(pesho).get();
+    }
 }

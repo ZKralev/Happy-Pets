@@ -1,4 +1,4 @@
-
+SET FOREIGN_KEY_CHECKS=0;
 
 -- some test users
 INSERT INTO users (id, username, password, email, full_name, user_role)

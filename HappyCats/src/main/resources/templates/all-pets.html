@@ -24,7 +24,7 @@
             <div class="col-lg-7 pb-5 pb-lg-0 px-3 px-lg-5">
                 <h4 class="text-secondary mb-3">All Pets</h4>
                 <h1 class="display-4 mb-4"><span class="text-primary">All pets</span> & <span class="text-secondary">their owners</span></h1>
-                    <div class="card" th:each="pet : ${pets.getContent()}"
+                    <div class="card" th:each="pet : ${pets.getContent()}" style="align-items: center;"
                          th:object="${pet}">
 
                                 <div class="card-text"><span>• Name: <th:block th:text="*{name}"></th:block> </span></div>

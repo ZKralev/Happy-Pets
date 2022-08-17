@@ -6,6 +6,8 @@ import bg.softuni.HappyCats.model.DTOS.UserDetailDTO;
 import bg.softuni.HappyCats.model.entity.Comment;
 import bg.softuni.HappyCats.model.entity.User;
 import bg.softuni.HappyCats.repository.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.processing.Generated;
@@ -34,14 +36,15 @@ public class CommentMapperImpl implements CommentMapper {
         }
 
         Comment commentEntity = new Comment();
-        Optional<User> user = userRepository.findByEmail(addCommentDTO.getEmail());
-        if (user.isPresent()){
-            commentEntity.setAuthor(user.get());
-            commentEntity.setEmail(user.get().getEmail());
-        }else {
-            commentEntity.setAuthor(null);
-            commentEntity.setEmail(addCommentDTO.getEmail());
+        String username;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails)principal).getUsername();
+        } else {
+            username = principal.toString();
         }
+        Optional<User> user = userRepository.findByUsername(username);
+        commentEntity.setAuthor(user.get());
         commentEntity.setMessage(addCommentDTO.getMessage());
         commentEntity.setCreated();
 

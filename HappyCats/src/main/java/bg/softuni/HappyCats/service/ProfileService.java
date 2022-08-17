@@ -36,4 +36,20 @@ public class ProfileService {
 
         userRepository.save(user.get());
     }
+
+    public UserDetailDTO getUserInfo() {
+        String username;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails)principal).getUsername();
+        } else {
+            username = principal.toString();
+        }
+        Optional<User> user = userRepository.findByUsername(username);
+        UserDetailDTO userDto = new UserDetailDTO();
+        userDto.setUsername(user.get().getUsername());
+        userDto.setEmail(user.get().getEmail());
+
+        return userDto;
+    }
 }

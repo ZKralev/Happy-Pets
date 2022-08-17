@@ -29,19 +29,7 @@ public class ProfileController {
     @GetMapping("/profile")
     public String profile(Model model) {
 
-        String username;
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails)principal).getUsername();
-        } else {
-            username = principal.toString();
-        }
-        Optional<User> user = userRepository.findByUsername(username);
-
-        UserDetailDTO userDto = new UserDetailDTO();
-        userDto.setUsername(user.get().getUsername());
-        userDto.setEmail(user.get().getEmail());
-
+        UserDetailDTO userDto = profileService.getUserInfo();
 
         model.addAttribute("userDto", userDto);
 

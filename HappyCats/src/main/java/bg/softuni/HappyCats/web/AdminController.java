@@ -32,7 +32,7 @@ public class AdminController {
                     sort = "username",
                     direction = Sort.Direction.ASC,
                     page = 0,
-                    size = 5) Pageable pageable) {
+                    size = 20) Pageable pageable) {
 
         model.addAttribute("users", adminService.getAllUsers(pageable));
 

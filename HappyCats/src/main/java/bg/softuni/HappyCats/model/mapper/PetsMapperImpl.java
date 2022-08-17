@@ -8,6 +8,8 @@ import bg.softuni.HappyCats.model.entity.Pets;
 import bg.softuni.HappyCats.model.entity.User;
 import bg.softuni.HappyCats.model.enums.UserRoleEnum;
 import bg.softuni.HappyCats.repository.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.processing.Generated;
@@ -38,10 +40,14 @@ public class PetsMapperImpl implements PetsMapper {
         pet.setKind(addPetsDTO.getKind());
         pet.setBreed(addPetsDTO.getBreed());
         pet.setName(addPetsDTO.getName());
-        Optional<User> user = userRepository.findByUsername(addPetsDTO.getOwner());
-        if (user.isEmpty()){
-            throw new ObjectNotFoundException("We wore unable to find your account, please write your username correctly!");
+        String username;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails)principal).getUsername();
+        } else {
+            username = principal.toString();
         }
+        Optional<User> user = userRepository.findByUsername(username);
         pet.setOwner(user.get());
 
         return pet;

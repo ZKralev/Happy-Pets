@@ -5,7 +5,6 @@ public class AddCommentDTO {
 
     private String message;
 
-    private String email;
 
     public AddCommentDTO() {
     }
@@ -18,11 +17,5 @@ public class AddCommentDTO {
         this.message = message;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }

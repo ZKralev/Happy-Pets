@@ -4,6 +4,8 @@ import bg.softuni.HappyCats.model.DTOS.AddBookingDTO;
 import bg.softuni.HappyCats.model.entity.Booking;
 import bg.softuni.HappyCats.model.entity.User;
 import bg.softuni.HappyCats.repository.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.processing.Generated;
@@ -34,9 +36,19 @@ public class BookingMapperImpl implements BookingMapper {
 
         bookingEntity.setName(addBookingDTO.getName());
         bookingEntity.setEmail(addBookingDTO.getEmail());
-        Optional<User> user = userRepository.findByEmail(addBookingDTO.getEmail());
-        if(user.isPresent()){
-            bookingEntity.setUser(user.get());
+        String username;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails)principal).getUsername();
+        } else {
+            username = principal.toString();
+        }
+        Optional<User> userByLogged = userRepository.findByUsername(username);
+        Optional<User> userByEmail = userRepository.findByEmail(addBookingDTO.getEmail());
+        if(userByLogged.isPresent()){
+            bookingEntity.setUser(userByLogged.get());
+        }else if(userByEmail.isPresent()){
+            bookingEntity.setUser(userByEmail.get());
         }else{
             bookingEntity.setUser(null);
         }

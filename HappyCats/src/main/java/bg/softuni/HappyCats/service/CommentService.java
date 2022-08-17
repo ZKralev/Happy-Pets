@@ -24,7 +24,7 @@ public class CommentService {
     }
 
 
-    public void addComment(AddCommentDTO addCommentDTO, HappyPetsUserDetailsService userDetails) {
+    public void addComment(AddCommentDTO addCommentDTO) {
         Comment newComment = commentMapper.commentMapperDTO(addCommentDTO);
         System.out.println(newComment.toString());
         commentRepository.save(newComment);

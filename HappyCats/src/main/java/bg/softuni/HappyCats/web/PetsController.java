@@ -59,7 +59,7 @@ public class PetsController {
                     sort = "name",
                     direction = Sort.Direction.ASC,
                     page = 0,
-                    size = 5) Pageable pageable) {
+                    size = 20) Pageable pageable) {
 
         model.addAttribute("pets", petsService.getAllPets(pageable));
 

@@ -34,8 +34,7 @@ public class CommentsController {
     @PostMapping("/comment")
     public String addComment(@Valid AddCommentDTO addCommentDTO,
                            BindingResult bindingResult,
-                           RedirectAttributes redirectAttributes,
-                           @AuthenticationPrincipal HappyPetsUserDetailsService userDetails) {
+                           RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("addCommentDTO", addCommentDTO);
@@ -43,7 +42,7 @@ public class CommentsController {
                     bindingResult);
             return "redirect:/comment";
         }
-        commentService.addComment(addCommentDTO, userDetails);
+        commentService.addComment(addCommentDTO);
 
         return "redirect:/index";
     }

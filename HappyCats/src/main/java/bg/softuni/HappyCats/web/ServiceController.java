@@ -24,7 +24,7 @@ public class ServiceController {
                     sort = "created",
                     direction = Sort.Direction.ASC,
                     page = 0,
-                    size = 5) Pageable pageable) {
+                    size = 20) Pageable pageable) {
 
         model.addAttribute("comments", serviceService.getAllComments(pageable));
 

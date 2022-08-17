@@ -35,8 +35,8 @@ class UserControllerIT {
 
   @BeforeEach
   void setUp() {
-    testUser = testDataUtils.createTestUser("user@example.com");
-    testAdmin = testDataUtils.createTestAdmin("admin@example.com");
+    testUser = testDataUtils.createTestUser("ivan");
+    testAdmin = testDataUtils.createTestAdmin("zdravko");
   }
 
   @AfterEach
@@ -44,26 +44,10 @@ class UserControllerIT {
     testDataUtils.cleanUpDatabase();
   }
 
-
   @Test
   @WithMockUser(
           username = "zdravko",
-          password = "admin"
-  )
-  void testAddComment() throws Exception {
-    mockMvc.perform(post("/comment").
-                    param("email", "zdravko@example.com").
-                    param("message", "Hello!").
-                    with(csrf())
-            ).
-            andExpect(status().is3xxRedirection()).
-            andExpect(redirectedUrl("/index"));
-  }
-
-  @Test
-  @WithMockUser(
-          username = "zdravko",
-          password = "admin"
+          password = "4b148b365433c559fdc07a0742712e88b61d5e23a52bb10206c308908e2e67836ecb3ff5714006ea"
   )
   void testAddBooking() throws Exception {
     mockMvc.perform(post("/booking").
@@ -78,6 +62,7 @@ class UserControllerIT {
   }
 
 
+
   @Test
   @WithMockUser(
           username = "zdravko",
@@ -89,7 +74,6 @@ class UserControllerIT {
                     param("age", "2").
                     param("kind", "Cat").
                     param("breed", "British").
-                    param("owner", "zdravko").
                     with(csrf())
             ).
             andExpect(status().is3xxRedirection()).
@@ -108,7 +92,6 @@ class UserControllerIT {
                     param("age", "-22").
                     param("kind", "Cat").
                     param("breed", "British").
-                    param("owner", "zdravko").
                     with(csrf())
             ).
             andExpect(status().is3xxRedirection()).
@@ -127,7 +110,6 @@ class UserControllerIT {
                     param("age", "-2").
                     param("kind", "Cat").
                     param("breed", "British").
-                    param("owner", "zdravko").
                     with(csrf())
             ).
             andExpect(status().is3xxRedirection()).
