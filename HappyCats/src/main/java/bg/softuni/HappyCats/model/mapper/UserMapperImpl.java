@@ -2,7 +2,6 @@ package bg.softuni.HappyCats.model.mapper;
 
 import javax.annotation.processing.Generated;
 
-import bg.softuni.HappyCats.model.DTOS.CreateOrUpdateUserDTO;
 import bg.softuni.HappyCats.model.DTOS.UserDetailDTO;
 import bg.softuni.HappyCats.model.DTOS.UserRegistrationDTO;
 import bg.softuni.HappyCats.model.entity.User;
@@ -35,29 +34,6 @@ public class UserMapperImpl implements UserMapper {
         return userEntity;
     }
 
-    @Override
-    public CreateOrUpdateUserDTO userEntityToCreateOrUpdateUserDtoTo(User user) {
-        if ( user == null ) {
-            return null;
-        }
-
-        CreateOrUpdateUserDTO createOrUpdateUserDTO = new CreateOrUpdateUserDTO();
-
-        createOrUpdateUserDTO.setId(user.getId());
-        createOrUpdateUserDTO.setUsername(user.getUsername());
-        createOrUpdateUserDTO.setFullName(user.getFullName());
-        createOrUpdateUserDTO.setEmail(user.getEmail());
-        createOrUpdateUserDTO.setPets(user.getPets());
-        String role;
-        if(user.getUserRoles() == UserRoleEnum.ADMIN){
-            role = "0";
-        }else{
-            role = "1";
-        }
-        createOrUpdateUserDTO.setUserRole(role);
-
-        return createOrUpdateUserDTO;
-    }
 
     @Override
     public UserDetailDTO userEntityToUserDetailDto(User user) {

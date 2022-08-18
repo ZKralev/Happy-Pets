@@ -1,7 +1,6 @@
 package bg.softuni.HappyCats.web;
 
 import bg.softuni.HappyCats.exception.ObjectNotFoundException;
-import bg.softuni.HappyCats.model.DTOS.CreateOrUpdateUserDTO;
 import bg.softuni.HappyCats.service.AdminService;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

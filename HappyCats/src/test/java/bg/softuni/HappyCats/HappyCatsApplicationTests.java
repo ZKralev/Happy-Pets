@@ -10,4 +10,9 @@ class HappyCatsApplicationTests {
     void contextLoads() {
     }
 
+    @Test
+    public void main() {
+        HappyCatsApplication.main(new String[] {});
+    }
+
 }

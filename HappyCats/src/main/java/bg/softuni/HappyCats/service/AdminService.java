@@ -1,7 +1,5 @@
 package bg.softuni.HappyCats.service;
 
-import bg.softuni.HappyCats.exception.ObjectNotFoundException;
-import bg.softuni.HappyCats.model.DTOS.CreateOrUpdateUserDTO;
 import bg.softuni.HappyCats.model.DTOS.UserDetailDTO;
 import bg.softuni.HappyCats.model.entity.User;
 import bg.softuni.HappyCats.model.enums.UserRoleEnum;
@@ -9,8 +7,6 @@ import bg.softuni.HappyCats.model.mapper.UserMapper;
 import bg.softuni.HappyCats.repository.UserRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -34,11 +30,7 @@ public class AdminService {
 
     }
 
-    public Optional<CreateOrUpdateUserDTO> getUserEditDetails(Long userID) {
-        return userRepository.
-                findById(userID).
-                map(userMapper::userEntityToCreateOrUpdateUserDtoTo);
-    }
+
 
     public Optional<UserDetailDTO> findUserByID(Long userID) {
         return userRepository.
@@ -46,15 +38,7 @@ public class AdminService {
                 map(userMapper::userEntityToUserDetailDto);
     }
 
-    public void changeUserRole(CreateOrUpdateUserDTO userDetailDTO) {
-        Optional<User> user = userRepository.findByUsername(userDetailDTO.getUsername());
-        if(user.isEmpty()){
-            throw new ObjectNotFoundException("Not Found User");
-        }else{
-            user.get().setUserRoles(userDetailDTO.getUserRole());
-            userRepository.save(user.get());
-        }
-    }
+
 
     public void makeAdmin(Long id) {
 

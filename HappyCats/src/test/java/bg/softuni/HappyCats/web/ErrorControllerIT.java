@@ -10,10 +10,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.RequestPostProcessor;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -45,9 +45,21 @@ class ErrorControllerIT {
           password = "stoyan",
           roles = "USER"
   )
-  public void getError() throws Exception {
-    mockMvc.perform(get("/admin"))
-            .andExpect(status().is4xxClientError());
+  public void getError500() throws Exception {
+    mockMvc.perform(get("/error"))
+            .andExpect(status().isOk());
+  }
+
+
+  @Test
+  @WithMockUser(
+          username = "stoyan",
+          password = "stoyan",
+          roles = "USER"
+  )
+  public void getErrorAccess() throws Exception {
+    mockMvc.perform(get("/access"))
+            .andExpect(status().isOk());
   }
 
 

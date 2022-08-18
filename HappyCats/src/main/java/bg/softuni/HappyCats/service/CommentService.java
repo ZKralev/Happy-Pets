@@ -4,7 +4,6 @@ import bg.softuni.HappyCats.model.DTOS.AddCommentDTO;
 import bg.softuni.HappyCats.model.entity.Comment;
 import bg.softuni.HappyCats.model.mapper.CommentMapper;
 import bg.softuni.HappyCats.repository.CommentRepository;
-import bg.softuni.HappyCats.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +13,11 @@ public class CommentService {
 
     private final CommentRepository commentRepository;
     private final CommentMapper commentMapper;
-    private final UserRepository userRepository;
 
     @Autowired
-    public CommentService(CommentRepository commentRepository, CommentMapper commentMapper, UserRepository userRepository) {
+    public CommentService(CommentRepository commentRepository, CommentMapper commentMapper) {
         this.commentRepository = commentRepository;
         this.commentMapper = commentMapper;
-        this.userRepository = userRepository;
     }
 
 

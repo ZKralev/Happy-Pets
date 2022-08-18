@@ -1,7 +1,5 @@
 package bg.softuni.HappyCats.web;
 
-import bg.softuni.HappyCats.model.entity.Booking;
-import bg.softuni.HappyCats.model.entity.Pets;
 import bg.softuni.HappyCats.model.entity.User;
 import bg.softuni.HappyCats.util.TestDataUtils;
 import org.junit.jupiter.api.AfterEach;
@@ -44,41 +42,22 @@ class UserControllerIT {
     testDataUtils.cleanUpDatabase();
   }
 
+
+
   @Test
   @WithMockUser(
           username = "zdravko",
           password = "4b148b365433c559fdc07a0742712e88b61d5e23a52bb10206c308908e2e67836ecb3ff5714006ea"
   )
-  void testAddBooking() throws Exception {
-    mockMvc.perform(post("/booking").
-                    param("name", "ivancho").
-                    param("email", "ivan@example.com").
-                    param("date-time", "12-27-2022 15:41:10").
-                    param("service", "1").
+  void testOpenComment() throws Exception {
+    mockMvc.perform(get("/comment").
                     with(csrf())
             ).
-            andExpect(status().is3xxRedirection()).
-            andExpect(redirectedUrl("/booking"));
+            andExpect(status().isOk());
   }
 
 
 
-  @Test
-  @WithMockUser(
-          username = "zdravko",
-          password = "admin"
-  )
-  void testAddPet() throws Exception {
-    mockMvc.perform(post("/pets").
-                    param("name", "ivancho").
-                    param("age", "2").
-                    param("kind", "Cat").
-                    param("breed", "British").
-                    with(csrf())
-            ).
-            andExpect(status().is3xxRedirection()).
-            andExpect(redirectedUrl("/pets"));
-  }
 
   @Test
   @WithMockUser(
@@ -114,6 +93,14 @@ class UserControllerIT {
             ).
             andExpect(status().is3xxRedirection()).
             andExpect(redirectedUrl("/pets"));
+  }
+
+  @Test
+  void createTwoUsers() throws Exception {
+    User userOne = new User("ivan", "1123");
+    User userTwo = new User("ivan2", "112134", "ivan@abv.bg", "Ivan Ivan");
+    System.out.println(userOne.toString());
+    System.out.println(userTwo.toString());
   }
 
   @Test

@@ -1,12 +1,9 @@
 package bg.softuni.HappyCats.model.mapper;
 
-import bg.softuni.HappyCats.exception.ObjectNotFoundException;
 import bg.softuni.HappyCats.model.DTOS.AddPetsDTO;
 import bg.softuni.HappyCats.model.DTOS.PetsDTO;
-import bg.softuni.HappyCats.model.DTOS.UserDetailDTO;
 import bg.softuni.HappyCats.model.entity.Pets;
 import bg.softuni.HappyCats.model.entity.User;
-import bg.softuni.HappyCats.model.enums.UserRoleEnum;
 import bg.softuni.HappyCats.repository.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

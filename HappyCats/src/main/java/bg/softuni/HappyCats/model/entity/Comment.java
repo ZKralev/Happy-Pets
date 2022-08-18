@@ -14,7 +14,7 @@ public class Comment {
 
     private LocalDateTime created;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @Column(columnDefinition = "TEXT")
     private String message;
 
     @ManyToOne
