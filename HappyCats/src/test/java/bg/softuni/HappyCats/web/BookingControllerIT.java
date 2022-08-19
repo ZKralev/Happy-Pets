@@ -1,9 +1,11 @@
 package bg.softuni.HappyCats.web;
 
 
+import bg.softuni.HappyCats.model.DTOS.AddBookingDTO;
 import bg.softuni.HappyCats.model.entity.Booking;
 import bg.softuni.HappyCats.model.entity.Pets;
 import bg.softuni.HappyCats.model.entity.User;
+import bg.softuni.HappyCats.service.BookingService;
 import bg.softuni.HappyCats.util.TestDataUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -43,8 +45,7 @@ public class BookingControllerIT {
     private TestDataUtils testDataUtils;
 
     private User testUser, testAdmin;
-
-
+    
     @BeforeEach
     void setUp() {
         testUser = testDataUtils.createTestUser("user@example.com");
@@ -112,5 +113,11 @@ public class BookingControllerIT {
         System.out.println(booking.getUser());
         System.out.println(booking.getService());
         System.out.println(booking.getReservationDateTime());
+
+        AddBookingDTO dto = new AddBookingDTO();
+        dto.setEmail("ivan@avd.com");
+        dto.setName("ivanee");
+        dto.setService(1);
+        dto.setReservationDateTime(LocalDateTime.now());
     }
 }

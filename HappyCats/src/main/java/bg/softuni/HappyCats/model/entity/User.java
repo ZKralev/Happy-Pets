@@ -113,9 +113,6 @@ public class User {
     @ManyToOne()
     private Plan plans;
 
-    public Plan getPlans() {
-        return plans;
-    }
 
     public void setPlans(Plan plans) {
         this.plans = plans;

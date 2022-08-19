@@ -35,13 +35,6 @@ public class UserRegistrationDTO {
     public UserRegistrationDTO() {
     }
 
-    public UserRegistrationDTO(String username, String fullname, String email, String password, String confirmPassword) {
-        this.username = username;
-        this.fullname = fullname;
-        this.email = email;
-        this.password = password;
-        this.confirmPassword = confirmPassword;
-    }
 
     public String getUsername() {
         return username;
@@ -57,10 +50,7 @@ public class UserRegistrationDTO {
         return fullname;
     }
 
-    public UserRegistrationDTO setFullname(String fullName) {
-        this.fullname = fullName;
-        return this;
-    }
+
     public String getEmail() {
         return email;
     }

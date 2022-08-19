@@ -178,6 +178,26 @@ class UserControllerIT {
             .andExpect(model().attributeExists("users"));
   }
 
+  @Test
+  public void testLogErr() throws Exception {
+    mockMvc
+            .perform(MockMvcRequestBuilders
+                    .get("/login-error"))
+            .andExpect(status().is3xxRedirection()).
+            andExpect(redirectedUrl("http://localhost/login"));
+  }
 
-
+  @Test
+  @WithMockUser(
+          username = "zdravko",
+          password = "admin",
+          roles = "ADMIN"
+  )
+  public void maintenance() throws Exception {
+    mockMvc
+            .perform(MockMvcRequestBuilders
+                    .get("/maintenance"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("maintenance"));
+  }
 }

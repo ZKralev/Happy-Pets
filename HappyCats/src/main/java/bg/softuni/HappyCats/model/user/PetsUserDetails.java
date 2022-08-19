@@ -30,9 +30,6 @@ public class PetsUserDetails implements UserDetails {
     return id;
   }
 
-  public String getFullName() {
-    return fullName;
-  }
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
